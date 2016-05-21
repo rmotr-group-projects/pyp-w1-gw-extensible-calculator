@@ -1,4 +1,4 @@
-from .exceptions import InvalidParams
+from calculator.exceptions import *
 import sympy
 
 def add(*args):

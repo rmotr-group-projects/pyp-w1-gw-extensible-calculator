@@ -31,11 +31,12 @@ def perform_operation(calc, operation, params):
     """
     
     # Test parameters, raise error if invalid
-    valid_params = all(
-            [isinstance(param, numbers.Number) for param in params]
-        )
-    if not valid_params:
-        raise InvalidParams('Given params are invalid.')
+    if operation != 'plot':
+        valid_params = all(
+                [isinstance(param, numbers.Number) for param in params]
+            )
+        if not valid_params:
+            raise InvalidParams('Given params are invalid.')
     
     # Check operation, raise error if invalid
     if operation not in get_operations(calc):
@@ -105,4 +106,5 @@ def repeat_last_operation(calc):
     """
     if calc['history']:
         return calc['history'][-1][3]
+
 
