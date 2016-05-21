@@ -70,7 +70,7 @@ def add_new_operation(calc, operation):
         raise InvalidParams('Can only add one operation at a time')
     
     # Add operation to calculator
-    operation_name, operation_function = operation.items()[0]
+    operation_name, operation_function = next(iter(operation.items()))
     
     calc['operations'][operation_name] = operation_function
 
@@ -79,7 +79,7 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return calc['operations'].keys()
+    return list(calc['operations'].keys())
 
 
 def get_history(calc):
