@@ -35,3 +35,19 @@ class TestCalculatorOperations(unittest.TestCase):
         self.assertEqual(divide(12, 2, 3), 2)
 
     # implement extra tests for your custom operations
+    def test_square_root(self):
+        self.assertEqual(square_root(4), 2)
+        self.assertEqual(square_root(0), 0)
+        with self.assertRaises(TypeError):
+            square_root(1,2)
+        val_err_msg = 'negative number cannot be raised to a fractional power'
+        #with self.assertRaisesRegexp(ValueError, val_err_msg):
+        #    square_root(-1)  # Returns a complex number in python 3
+            
+    def test_plot(self):
+        with self.assertRaises(TypeError):
+            plot('-x**2', -2)
+        with self.assertRaises(ValueError):
+            plot('-x**2', -2, 'a')
+        with self.assertRaises(NameError):
+            plot(-x**2, -2, 2)
