@@ -64,10 +64,13 @@ def add_new_operation(calc, operation):
     
     #calc['operations'] = dict(list(calc['operations'].items()) + list(operation.items()))
     
-    newname = list(operation.keys())[0]
-    newval = operation[newname]
-    calc['operations'][newname] = newval
-    return calc
+    if isinstance(operation, dict) == True:
+        newname = list(operation.keys())[0]
+        newval = operation[newname]
+        calc['operations'][newname] = newval
+        return calc
+    else:
+        raise InvalidOperation('Given operation is invalid.')
 
 
 def get_operations(calc):
