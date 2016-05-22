@@ -1,7 +1,7 @@
 from __future__ import division
-from functools import reduce
+from functools import *
 def add(*args):
-    print("my args is {}".format(args))
+    #print("my args is {}".format(args))
     result = reduce(lambda acc, y: acc + y, args, 0)
     return result
 

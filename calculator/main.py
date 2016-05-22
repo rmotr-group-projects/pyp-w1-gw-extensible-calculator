@@ -3,8 +3,8 @@ from datetime import datetime
 from calculator.operations import *
 from calculator.exceptions import *
 
-
-def create_new_calculator(operations={'add':add,'subtract':subtract,'multiply':multiply,'divide':divide}):
+def create_new_calculator(operations={}):
+#def create_new_calculator(operations={'add':add,'subtract':subtract,'multiply':multiply,'divide':divide}):
     """
     Creates a configuration dict for a new calculator. Optionally pre loads an
     initial set of operations. By default a calculator with no operations
@@ -28,7 +28,7 @@ def create_new_calculator(operations={'add':add,'subtract':subtract,'multiply':m
 
 
 
-def perform_operation(calc, operation, *params):
+def perform_operation(calc, operation, params):
     """
     Executes given operation with given params. It returns the result of the
     operation execution.
@@ -38,13 +38,13 @@ def perform_operation(calc, operation, *params):
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
     """
-    
     my_operation = calc['operations'][operation]
-    
-    #print("my operation is {}".format(my_operation))
-    result = my_operation(*params)
-    #except KeyError:
-    #    raise InvalidOperation('Given operation is invalid.')
+    try:
+        result = my_operation(*params)
+    except KeyError:
+        raise InvalidOperation('Given operation is invalid.')
+    except TypeError:
+        raise InvalidParams('Given params are invalid.')
     
     
     ## add history entry to calc
@@ -74,7 +74,7 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return calc['operations'].keys()
+    return list(calc['operations'].keys())
     
 
 
@@ -105,6 +105,17 @@ def repeat_last_operation(calc):
     Returns the result of the last operation executed in the history.
     """
     #'perform_operation(calc, operation, params)'
+    if calc['history'] != []:
+        operation = calc['history'][-1][1]
+        params = calc['history'][-1][2]
+        operation = calc['operations'][operation]
+        return perform_operation(calc,operation,params)
+    return None
+    
+    """ debug
+    Returns the result of the last operation executed in the history.
+    
+    #'perform_operation(calc, operation, params)'
     operation = calc['history'][-1][1]
     print("my operation is {}".format(operation))
     params = calc['history'][-1][2]
@@ -112,4 +123,5 @@ def repeat_last_operation(calc):
     operation = calc['operations'][operation]
     print("my operation is {}".format(operation))
     return perform_operation(calc,operation,*params)
+    """
     
