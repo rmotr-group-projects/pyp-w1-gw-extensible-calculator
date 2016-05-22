@@ -108,7 +108,7 @@ def repeat_last_operation(calc):
     if calc['history'] != []:
         operation = calc['history'][-1][1]
         params = calc['history'][-1][2]
-        #operation = calc['operations'][operation]
+        operation = calc['operations'][operation]
         return perform_operation(calc,operation,params)
     return None
     
