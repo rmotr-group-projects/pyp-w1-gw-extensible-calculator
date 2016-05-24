@@ -36,6 +36,10 @@ class TestCalculator(unittest.TestCase):
         res = perform_operation(self.calc, 'add', (5, 3))
         self.assertEqual(res, 8)
 
+    def test_perform_nonexistant_operation(self):
+        res = perform_operation(self.calc, 'additup', (5, 3))
+        self.assertEqual(res, 8)
+
     def test_perform_operation_variable_arguments(self):
         def multi_sum(*args):
             return sum(args)
@@ -70,6 +74,11 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaisesRegexp(InvalidOperation,
                                      'Given operation is invalid.'):
             add_new_operation(self.calc, operation='something weird')
+
+    def test_add_new_operations_invalid_operation_type_in_dict(self):
+        with self.assertRaisesRegexp(InvalidOperation,
+                                     'Given operation is invalid.'):
+            add_new_operation(self.calc, operation={'fakedef': 'something weird'})
 
     def test_get_operations(self):
         expected = ['add']
