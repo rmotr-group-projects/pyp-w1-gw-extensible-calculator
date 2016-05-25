@@ -1,3 +1,4 @@
+from sympy.plotting import plot
 
 def add(*args):
     # your implementation here
@@ -24,3 +25,5 @@ def operate(operation, *args):
     for number in args[1:]:
         output = operation(output, number)
     return output
+    
+draw_plot = lambda expression, x_min, x_max: plot(expression, ('x', x_min, x_max))

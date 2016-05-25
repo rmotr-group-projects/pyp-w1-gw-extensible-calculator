@@ -40,3 +40,4 @@ class TestCalculatorOperations(unittest.TestCase):
         self.assertEqual(add(), 0)
         self.assertEqual(subtract(), 0)
         self.assertEqual(multiply(), 0)
+        
