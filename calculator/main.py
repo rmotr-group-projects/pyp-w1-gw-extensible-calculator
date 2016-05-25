@@ -57,7 +57,7 @@ def add_new_operation(calc, operation):
     """
     if type(operation) != dict:
         raise InvalidOperation('Given operation is invalid.')
-    if operation.keys()[0] not in calc["operations"]:
+    if list(operation.keys())[0] not in calc["operations"]:
         calc["operations"][operation.keys()[0]] = operation[operation.keys()[0]]
 
 
