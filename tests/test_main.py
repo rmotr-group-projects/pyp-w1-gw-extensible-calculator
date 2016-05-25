@@ -60,6 +60,13 @@ class TestCalculator(unittest.TestCase):
                                      'Given params are invalid.'):
             perform_operation(self.calc, 'add', (5, 'hello'))
 
+    def test_perform_operation_invalid_operation(self):
+        with self.assertRaisesRegexp(InvalidOperation,
+                                     '"something-weird" operation not support'):
+            perform_operation(self.calc, 'something-weird', (5, 2))
+            
+
+
     def test_add_new_operations(self):
         multiply = lambda a, b: a * b
         add_new_operation(self.calc, operation={'multiply': multiply})
