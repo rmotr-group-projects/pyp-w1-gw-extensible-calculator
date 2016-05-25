@@ -16,7 +16,7 @@ def create_new_calculator(operations={}):
     return { "history": [], "operations": operations}
 
 
-def perform_operation(calc, operation, params):
+def perform_operation(calc, operation, params=None):
     """
     Executes given operation with given params. It returns the result of the
     operation execution.
@@ -29,10 +29,11 @@ def perform_operation(calc, operation, params):
     if operation not in calc["operations"]:
         raise InvalidOperation('"{}" operation not supported.'.format(operation))
     
-    if params in (True, False):
+    if params in (True, False) or params is None:
         raise InvalidParams("Given params are invalid.")
     elif not all([isinstance(param, (float,int)) for param in params]):
         raise InvalidParams("Given params are invalid.")
+        
 
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
