@@ -1,7 +1,10 @@
 from datetime import datetime
-
-from calculator.operations import *
-from calculator.exceptions import *
+try:
+    from calculator.operations import *
+    from calculator.exceptions import *
+except:
+    from .calculator.operations import *
+    from .calculator.exceptions import *
 
 
 def create_new_calculator(operations=None):
