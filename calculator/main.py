@@ -29,16 +29,15 @@ def perform_operation(calc, operation, params=None):
     if operation not in calc["operations"]:
         raise InvalidOperation('"{}" operation not supported.'.format(operation))
     
-    if params in (True, False) or params is None:
-        raise InvalidParams("Given params are invalid.")
-    elif not all([isinstance(param, (float,int)) for param in params]):
+    
+    if params is None or not all([isinstance(param, (float,int)) and type(param) is not bool for param in params]):
         raise InvalidParams("Given params are invalid.")
         
 
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     result = calc["operations"][operation](*params)
-    
+
     calc["history"].append((now, operation, params, result))
     return result
 
@@ -54,10 +53,8 @@ def add_new_operation(calc, operation):
     if not isinstance(operation, dict) :
         raise InvalidOperation('Given operation is invalid.')
         
-    key = list(operation.keys())[0]
-    calc["operations"][key] = operation[key]
-    return calc
-
+    calc["operations"].update(operation)
+    
 
 def get_operations(calc):
     """
@@ -93,4 +90,4 @@ def repeat_last_operation(calc):
     Returns the result of the last operation executed in the history.
     """
     if calc["history"] != []:
-        return calc["history"][-1][3]
+        return calc["history"][-1][-1]

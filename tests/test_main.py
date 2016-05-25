@@ -70,7 +70,11 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaisesRegexp(InvalidParams,
                                      'Given params are invalid.'):
             perform_operation(self.calc, 'add')
-     
+            
+    def test_perform_operation_invalid_params_bool(self):
+        with self.assertRaisesRegexp(InvalidParams,
+                                     'Given params are invalid.'):
+            perform_operation(self.calc, 'add', (1, False))
 
     def test_add_new_operations(self):
         multiply = lambda a, b: a * b
