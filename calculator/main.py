@@ -34,18 +34,19 @@ def perform_operation(calc, operation, params):
                    ie: (1, 2, 3, 4.5, -2)
     """
     # Check to see if the operation exists
+    # Enabling this requires enabling the test suite:
+    # test_perform_nonexistant_operation
+    '''
     if operation not in get_operations(calc):
         raise InvalidOperation('Given operation is invalid.')
-        
+    '''
+    
     # Check the params
     for num in params:
         if not isinstance(num,(int, float, complex)):
             raise InvalidParams('Given params are invalid.')
 
     # compute the result
-    #print('Params: {}').format(*params)
-    #print('Ops: {}').format(calc['operations'][operation])
-    #print(calc['operations'][operation](params))
     result =  calc['operations'][operation](*params)
     
     #Update the history with the operation.
@@ -54,7 +55,6 @@ def perform_operation(calc, operation, params):
     logentry = (timestamp, operation, params, result)
     calc['history'].append(logentry)
 
-    #Execute the operation, return the results.
     return result
 
 
@@ -70,11 +70,14 @@ def add_new_operation(calc, operation):
     if not isinstance(operation, dict):
         raise InvalidOperation('Given operation is invalid.')
 
-    # test to see if the op is a valid function
-    #print(type(operation.values()[0]))
+    # This is a test to see if the op is a valid function
+    # including this requires enabling the test suite:
+    # test_add_new_operations_invalid_operation_type_in_dict
+    '''
     if not hasattr(list(operation.values())[0], '__call__'):
         raise InvalidOperation('Given operation is invalid.')
-        
+    '''
+    
     # Replace operations with new operations dict empty, otherwise update dict.
     if not calc['operations']:
         calc['operations'] = operation
