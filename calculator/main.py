@@ -58,14 +58,14 @@ def add_new_operation(calc, operation):
     if type(operation) != dict:
         raise InvalidOperation('Given operation is invalid.')
     if list(operation.keys())[0] not in calc["operations"]:
-        calc["operations"][operation.keys()[0]] = operation[operation.keys()[0]]
+        calc["operations"][list(operation.keys())[0]] = operation[list(operation.keys())[0]]
 
 
 def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return calc["operations"].keys() #Return a list of keys, of the operations dictionary
+    return list(calc["operations"].keys()) #Return a list of keys, of the operations dictionary
 
 
 def get_history(calc):
