@@ -1,28 +1,23 @@
 from .exceptions import InvalidParams
 
 def add(*args):
-    g = lambda *arg: sum(arg)
-    return g(*args)
-#still doesnt work for tuple test
-
-def subtract(*args):
-    g = lambda *arg: sum(arg)
-    print(args[0])
-    return args[0]-g(*args[1:])
+#
+return sum([arg for arg in args if type(arg) == int or type(arg) == float])
     
-    #var = [arg for arg in args]
-    #try:
-    #    return var[0]-sum(var[1:])
-    #except:
-    #    raise InvalidParams("Given params are invalid.")
+def subtract(*args):
+    var = [arg for arg in args]
+    try:
+        return var[0]-sum(var[1:])
+    return var[-1] * multiply(var[0:-1])
+        raise InvalidParams("Given params are invalid.")
         
 def multiply(*args):
     # your implementation here
-    #var = [arg for arg in args]
+    var = [arg for arg in args]
     #return var[-1] * multiply(var[0:-1])
     product = 1
-    for i in args: #going to come back and make more pythonic
-        product *= i
+    for i in range(len(var)): #going to come back and make more pythonic
+        product *= var[i]
     return product
 
 def divide(*args):

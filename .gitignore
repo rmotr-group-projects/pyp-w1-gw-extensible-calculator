@@ -56,7 +56,10 @@ coverage.xml
 docs/_build/
 
 # PyBuilder
+pyp-w1-gw-extensible-calculator
 target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+
