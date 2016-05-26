@@ -20,7 +20,7 @@ def multiply(*args):
     
 
 def divide(*args):
-    var = [arg for arg in args]
+    var = [float(arg) for arg in args]
     ans = var[0]
     for arg in var[1:]:
         if arg == 0:
