@@ -1,18 +1,32 @@
+from .exceptions import InvalidParams
+
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
+
 
 def subtract(*args):
-    # your implementation here
-    pass
-
+    if args[0]:
+       return args[0] - sum(args[1:])
+    else:
+        return None
+        
+        
 def multiply(*args):
-    # your implementation here
-    pass
+    product = 1
+    for arg in args:
+        product *= arg
+    return product
+    
 
 def divide(*args):
-    # your implementation here
-    pass
+    var = [float(arg) for arg in args]
+    ans = var[0]
+    for arg in var[1:]:
+        if arg == 0:
+            raise InvalidParams("Given params are invalid.")
+        ans = ans / arg
+    return ans
+    
 
-# add your custom operations here
+

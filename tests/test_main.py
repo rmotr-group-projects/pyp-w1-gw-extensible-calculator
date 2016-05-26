@@ -14,7 +14,7 @@ class TestCalculator(unittest.TestCase):
         self.calc = create_new_calculator(operations={})
         add_new_operation(self.calc, operation={'add': self.add})
 
-    def test_create_new_calculator(self):
+    def test_create_new_calculator(self): #passed
         subtract = lambda a, b: a - b
         operations = {'add': self.add, 'subtract': subtract}
         calc = create_new_calculator(operations=operations)
@@ -24,7 +24,7 @@ class TestCalculator(unittest.TestCase):
         }
         self.assertEqual(calc, expected)
 
-    def test_create_new_calculator_empty_operations(self):
+    def test_create_new_calculator_empty_operations(self): #passed
         calc = create_new_calculator()
         expected = {
             'operations': {},
@@ -36,7 +36,7 @@ class TestCalculator(unittest.TestCase):
         res = perform_operation(self.calc, 'add', (5, 3))
         self.assertEqual(res, 8)
 
-    def test_perform_operation_variable_arguments(self):
+    def test_perform_operation_variable_arguments(self):    #passed
         def multi_sum(*args):
             return sum(args)
         add_new_operation(self.calc, operation={'multi_sum': multi_sum})
@@ -47,31 +47,31 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(
             perform_operation(self.calc, 'multi_sum', (1, 2, 3, 4, 5)), 15)
 
-    def test_perform_operation_types(self):
+    def test_perform_operation_types(self): #passed
         res = perform_operation(self.calc, 'add', (5, 3.5))
         self.assertEqual(res, 8.5)
 
-    def test_perform_operation_negative_values(self):
+    def test_perform_operation_negative_values(self): #passed
         res = perform_operation(self.calc, 'add', (5, -2))
         self.assertEqual(res, 3)
 
-    def test_perform_operation_invalid_params(self):
+    def test_perform_operation_invalid_params(self):    
         with self.assertRaisesRegexp(InvalidParams,
                                      'Given params are invalid.'):
             perform_operation(self.calc, 'add', (5, 'hello'))
 
-    def test_add_new_operations(self):
+    def test_add_new_operations(self):  #passed
         multiply = lambda a, b: a * b
         add_new_operation(self.calc, operation={'multiply': multiply})
         res = perform_operation(self.calc, 'multiply', (2, 3))
         self.assertEqual(res, 6)
 
-    def test_add_new_operations_invalid_operation_type(self):
+    def test_add_new_operations_invalid_operation_type(self):   #passed
         with self.assertRaisesRegexp(InvalidOperation,
                                      'Given operation is invalid.'):
             add_new_operation(self.calc, operation='something weird')
 
-    def test_get_operations(self):
+    def test_get_operations(self):  #passed
         expected = ['add']
         self.assertEqual(get_operations(self.calc), expected)
 
@@ -112,6 +112,6 @@ class TestCalculator(unittest.TestCase):
         perform_operation(self.calc, 'add', (5, 10))
         self.assertEqual(repeat_last_operation(self.calc), 15)
 
-    def test_repeate_last_operation_no_history(self):
+    def test_repeate_last_operation_no_history(self):   #passed
         reset_history(self.calc)
         self.assertEqual(repeat_last_operation(self.calc), None)
