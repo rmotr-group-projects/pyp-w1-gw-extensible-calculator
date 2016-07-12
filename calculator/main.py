@@ -22,14 +22,9 @@ def create_new_calculator(operations=None):
     calc['operations'] = {}
     
     #Assuming operations=None
-    if not operations:
-        pass
-
-    #Assuming operations has at least one argument
-    else:
+    if operations:
         for key, value in operations.items():
             calc['operations'][key] = value
-        pass
     
     return calc
 
