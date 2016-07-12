@@ -23,13 +23,15 @@ def create_new_calculator(operations=None):
     
     #Assuming operations=None
     if not operations:
-        return calc
+        pass
 
     #Assuming operations has at least one argument
     else:
         for key, value in operations.items():
             calc['operations'][key] = value
-        return calc
+        pass
+    
+    return calc
 
 
 def perform_operation(calc, operation, params):
@@ -42,6 +44,7 @@ def perform_operation(calc, operation, params):
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
     """
+    
     pass
 
 
