@@ -1,18 +1,31 @@
 
 def add(*args):
-    # your implementation here
-    pass
-
+    return sum(args)
+    
 def subtract(*args):
-    # your implementation here
-    pass
+    if len(args) <= 1:
+        return args[0]
+    result = args[0]
+    for x in range(1,len(args)):
+        result -= args[x]
+    return result
 
 def multiply(*args):
-    # your implementation here
-    pass
+    if len(args) <= 1:
+        return args[0]
+    result = args[0]
+    for x in range(1,len(args)):
+        result *= args[x]
+    return result
+    
 
 def divide(*args):
-    # your implementation here
-    pass
+    if len(args) <= 1:
+        return args[0]
+    result = float(args[0])
+    for x in range(1,len(args)):
+        result /= args[x]
+    return result
+
 
 # add your custom operations here
