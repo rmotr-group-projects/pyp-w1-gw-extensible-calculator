@@ -1,3 +1,4 @@
+from functools import reduce
 
 def add(*args):
     return reduce((lambda x, y: x + y), args)
@@ -14,4 +15,3 @@ def divide(*args):
 # add your custom operations here
 def power(*args):
     return reduce((lambda x, y: x ** y), args)
-    
