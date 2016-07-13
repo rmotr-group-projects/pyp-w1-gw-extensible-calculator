@@ -14,14 +14,12 @@ def create_new_calculator(operations=None):
                        ie: {'sum': sum_function, ...}
     """
     
-    
+    # Initialize calc
     calc = {}
-
-    #history is always empty
     calc['history'] = []
     calc['operations'] = {}
     
-    #Assuming operations=None
+    # If there are operations, add to dictionary
     if operations:
         for key, value in operations.items():
             calc['operations'][key] = value
@@ -49,20 +47,17 @@ def perform_operation(calc, operation, params):
         if not (type(arg) == int or type(arg) == float):
             raise InvalidParams("Given params are invalid.")
                 
-    # ('2016-05-20 12:00:00', 'add', (1, 2), 3),
     function = calc['operations'][operation]
 
+    # Add tuple to history of format: ('2016-05-20 12:00:00', 'add', (1, 2), 3))
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     l = [now, operation]
     
     result = function(*params)
     
-    #for param in params:
-        #l.append(param)
     l.append(params)
     l.append(result)
     t = tuple(l)
-    
     calc['history'].append(t)
     
     return result
@@ -77,7 +72,6 @@ def add_new_operation(calc, operation):
                       ie: {'add': add_function}
     """
     
-    # For loop not really needed since operation should be 1 item only
     if type(operation) == dict:
         for key, value in operation.items():
             calc['operations'][key] = value
@@ -87,11 +81,13 @@ def add_new_operation(calc, operation):
 
 
 def get_operations(calc):
+    
     """
     Returns the list of operation names supported by given calculator.
     """
 
     return list((calc['operations']).keys())
+
 
 def get_history(calc):
     """
@@ -104,7 +100,9 @@ def get_history(calc):
         ie:
         ('2016-05-20 12:00:00', 'add', (1, 2), 3),
     """
+    
     history = []
+    
     for item in calc['history']:
         history.append(item)
     
@@ -115,7 +113,9 @@ def reset_history(calc):
     """
     Resets the calculator history back to an empty list.
     """
+    
     calc['history'] = []
+    
     pass
 
 
@@ -123,6 +123,7 @@ def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
+    
     if calc['history']:
         previous_tuple = calc['history'][-1]
         operation = previous_tuple[1]
