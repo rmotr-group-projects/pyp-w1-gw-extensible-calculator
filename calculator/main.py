@@ -14,6 +14,7 @@ def create_new_calculator(operations=None):
                        ie: {'sum': sum_function, ...}
                        
     """
+    
     if operations is not None:
         calculator ={
             'operations':operations,

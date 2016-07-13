@@ -1,3 +1,4 @@
+from functools import reduce
 #using floats here to pass unit tests
 
 def add(*args):
