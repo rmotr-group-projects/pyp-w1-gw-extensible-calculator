@@ -1,3 +1,4 @@
+from functools import reduce
 
 def add(*args):
     return sum(args)
