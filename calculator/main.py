@@ -78,9 +78,12 @@ def add_new_operation(calc, operation):
     """
     
     # For loop not really needed since operation should be 1 item only
-    for key, value in operation.items():
-        calc['operations'][key] = value
-    return calc
+    if type(operation) == dict:
+        for key, value in operation.items():
+            calc['operations'][key] = value
+        return calc
+    else:
+        raise InvalidOperation("Given operation is invalid.")
 
 
 def get_operations(calc):
