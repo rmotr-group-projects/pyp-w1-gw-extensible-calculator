@@ -40,8 +40,9 @@ def perform_operation(calc, operation, params):
                    ie: (1, 2, 3, 4.5, -2)
     """
     
-    pass
-
+    function = calc['operations'][operation]
+    return function(*params)
+    
 
 def add_new_operation(calc, operation):
     """
@@ -51,14 +52,17 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
-    pass
+    
+    # For loop not really needed since operation should be 1 item only
+    for key, value in operation.items():
+        calc['operations'][key] = value
+    return calc
 
 
 def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    pass
 
 
 def get_history(calc):
