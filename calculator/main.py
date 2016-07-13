@@ -15,15 +15,10 @@ def create_new_calculator(operations=None):
     """
     
     if operations == None:    
-        calculator = {
-        'operations' : {},
-        'history' : []   
-        }
-    else:
-        calculator = {
-        'operations' : operations,
-        'history' : []
-        }
+        operations = {}
+        
+    calculator = {'operations' : operations, 'history' : []}
+    
     return calculator
 
 
@@ -45,12 +40,11 @@ def perform_operation(calc, operation, params):
                 p = float(p)
             except ValueError:
                 raise InvalidParams("Given params are invalid.")
+    
     op = calc['operations'][operation]
+    return op(*params)
     
     calc['history'].append((datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, op(*params)))
-    
-    return op(*params)
-
 
 def add_new_operation(calc, operation):
     """
