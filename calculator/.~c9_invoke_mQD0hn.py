@@ -29,13 +29,13 @@ def perform_operation(calc, operation, params):
     Executes given operation with given params. It returns the result of the
     operation execution.
 
-    :param calc: A calculator.
+    calc['operations']["oper"]
     :param operation: String with the operation name. ie: 'add'
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
     """
     for entry in params:
-        if type(entry) == int or type(entry) == float:
+        if type(entry) == int or float:
             continue
         else:
             raise InvalidParams('Given params are invalid.')
@@ -72,7 +72,7 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return calc['operations'].keys()
+    return calc['operations']
 
 
 def get_history(calc):
@@ -101,6 +101,4 @@ def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
-    if calc['history'] == []:
-        return None
-    return calc['history'][-1][3]
+    return calc['history'][0][1]

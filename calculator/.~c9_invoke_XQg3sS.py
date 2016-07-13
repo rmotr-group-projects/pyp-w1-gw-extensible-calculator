@@ -35,7 +35,7 @@ def perform_operation(calc, operation, params):
                    ie: (1, 2, 3, 4.5, -2)
     """
     for entry in params:
-        if type(entry) == int or type(entry) == float:
+        if type(entry) == int or float:
             continue
         else:
             raise InvalidParams('Given params are invalid.')
@@ -43,7 +43,7 @@ def perform_operation(calc, operation, params):
     if calc['operations'].get(operation) == None:
         raise InvalidOperation('Given operation is invalid.')
 
-    function = calc["operations"][operation]
+    return op
     
     calc['history'].append((datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, function(*params)))
     
@@ -72,7 +72,7 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return calc['operations'].keys()
+    return calc['operations']
 
 
 def get_history(calc):
@@ -101,6 +101,4 @@ def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
-    if calc['history'] == []:
-        return None
-    return calc['history'][-1][3]
+    return calc['history'][0][1]
