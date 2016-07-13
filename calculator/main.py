@@ -40,7 +40,7 @@ def perform_operation(calc, operation, params):
                    ie: (1, 2, 3, 4.5, -2)
     """
     # need to add exceptions for: an operation not in calc, invalid parameters, and insufficient parameters
-    print [operation]
+
     if operation not in get_operations(calc):
         raise InvalidOperation("Given operation is invalid.")
     for number in params:
@@ -50,20 +50,16 @@ def perform_operation(calc, operation, params):
     params_list = list(params)
     function = calc['operations'][operation] #gives us the function name of the operation specified
     datetime_obj = datetime.now()
-    print datetime_obj
-#do we need to format this more?
+
     result = params[0] 
     for num in params[1:]:
         result = function(num, result)
 
     
     formatted_date = datetime_obj.strftime("%Y-%m-%d %H:%M:%S")
-    #print formatted_date
+
     calc['history'].append((formatted_date, operation, params, result))
-    #expected = [
-        #     ('2016-05-20 12:00:00', 'add', (1, 2), 3),
-        #     ('2016-05-20 12:00:00', 'add', (5, 10), 15),
-        # ]
+
     return result
 def add_new_operation(calc, operation):
     
@@ -84,7 +80,7 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     # """
-    print calc['operations'].keys()
+
     return calc['operations'].keys()
 
 
@@ -101,7 +97,7 @@ def get_history(calc):
     """
     #every performed actionneeds to call this function
     #format time here, getcurrent time
-    print calc['history']
+
     return calc['history']
 
 
@@ -119,5 +115,5 @@ def repeat_last_operation(calc):
     if calc['history'] == []:
         return None
     return calc['history'][-1][3]
-    #print history_list[0]
+
     #return history_list[0]
