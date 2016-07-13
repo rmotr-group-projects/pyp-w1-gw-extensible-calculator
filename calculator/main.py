@@ -74,15 +74,14 @@ def add_new_operation(calc, operation):
     if not isinstance(operation, dict):
         raise InvalidOperation('Given operation is invalid.')
     calc['operations'].update(operation)
-    #return calc
 
 
 def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     # """
-
-    return calc['operations'].keys()
+    
+    return list(calc['operations'].keys())
 
 
 def get_history(calc):
