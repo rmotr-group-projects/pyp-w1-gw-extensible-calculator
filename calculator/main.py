@@ -41,10 +41,14 @@ def perform_operation(calc, operation, params):
             except ValueError:
                 raise InvalidParams("Given params are invalid.")
     
+    
     op = calc['operations'][operation]
-    return op(*params)
     
     calc['history'].append((datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, op(*params)))
+    
+    return op(*params)
+    
+    
 
 def add_new_operation(calc, operation):
     """
