@@ -1,18 +1,14 @@
+from functools import reduce
+#using floats here to pass unit tests
 
 def add(*args):
-    # your implementation here
-    pass
-
+    return sum((args))
+    
 def subtract(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: float(x) - float(y), args) 
 
 def multiply(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: float(x) * float(y), args)
 
 def divide(*args):
-    # your implementation here
-    pass
-
-# add your custom operations here
+    return reduce(lambda x, y: float(x) /float(y), args)
