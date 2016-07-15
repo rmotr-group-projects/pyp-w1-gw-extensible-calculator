@@ -57,6 +57,5 @@ def repeat_last_operation(calc):
     if calc['history'] == []:
         return None
     else:
-        last_action = calc['history'][-1]
-        return last_action[3]
+        return calc['history'][-1][3]
 
