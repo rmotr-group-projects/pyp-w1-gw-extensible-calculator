@@ -1,18 +1,27 @@
 
 def add(*args):
-    # your implementation here
-    pass
+    ans = 0
+    print("args,", args)
+    for item in args:
+        ans += item
+    return ans
 
 def subtract(*args):
-    # your implementation here
-    pass
+    ans = args[0] * 2
+    for item in args:
+        ans-= item
+    return ans
 
 def multiply(*args):
-    # your implementation here
-    pass
+    ans = 1
+    for item in args:
+        ans *= item
+    return ans
 
 def divide(*args):
-    # your implementation here
-    pass
+    ans = args[0] * args[0] * 1.0
+    for item in args:
+        ans /= item
+    return ans
 
 # add your custom operations here
