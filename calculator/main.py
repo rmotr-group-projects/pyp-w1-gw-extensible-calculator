@@ -61,7 +61,6 @@ def perform_operation(calc, operation, params):
                 result = calc['operations'][operation](*params)
                 dt = datetime.strftime(datetime.fromtimestamp(time()), '%Y-%m-%d %H:%M:%S')
                 calc['history'].append((dt, operation, params, result))
-                print result
                 return result
             else:
                 raise InvalidParams('Given params are invalid.') #This is hardcoded, fix this
@@ -80,7 +79,7 @@ def add_new_operation(calc, operation):
                 if operand not in calc['operations']:
                     calc['operations'][operand] = operation[operand]
                 else:
-                    print 'Skipping %s: %s exist in calculator.' % (operand, operand)
+                    print('Skipping %s: %s exist in calculator.' % (operand, operand))
         else:
             raise InvalidOperation('Given operation is invalid.') #This is hardcoded, fix this
 
