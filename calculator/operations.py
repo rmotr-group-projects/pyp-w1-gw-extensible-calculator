@@ -16,7 +16,7 @@ def divide(*args):
     float_value = args[0]
     for item in args[1:]:
         int_value /= item
-        float_value /= item
+        float_value /= float(item)
     if int_value != float_value:
         return float_value
     return int_value
