@@ -1,3 +1,4 @@
+import functools
 
 def add(*args):
     return sum(args)
@@ -17,7 +18,7 @@ def multiply(*args):
 
 def divide(*args):
     # your implementation here
-    return reduce(lambda x,y:float(x)/y,args)
+    return functools.reduce(lambda x,y:float(x)/y,args)
     pass
 
 # add your custom operations here
