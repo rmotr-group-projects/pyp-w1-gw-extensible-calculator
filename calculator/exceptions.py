@@ -1,16 +1,10 @@
 class InvalidOperation(Exception):
-    pass
-    """
-    def __init__(self, operation):
-        self.error_msg = 'Given operation is invalid.'
-    """
+    def __init__(self):
+        Exception.__init__(self,"Given operation is invalid.") 
 
 class InvalidParams(Exception):
-    """
     def __init__(self):
-        self.error_msg = 'Given params are invalid.'
-    """
-    pass
+        Exception.__init__(self,"Given params are invalid.") 
 
 class CalculatorError(Exception):
     """docstring for NoCalculator"""

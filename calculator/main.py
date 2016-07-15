@@ -33,15 +33,6 @@ def check_integrity(calculator, check_calc=True):
     except CalculatorError as err:
         return False
 
-def check_arguments_for_error(argument, error_type):
-    try:
-        argument
-    except error_type as error:
-        raise error.error_msg
-        return True
-    else:
-        return False
-
 def perform_operation(calc, operation, params):
     """
     Executes given operation with given params. It returns the result of the
@@ -55,7 +46,7 @@ def perform_operation(calc, operation, params):
     if check_integrity(calc):
         # check to see if operation parameter exists within calculator object
         if operation not in calc['operations']:
-            raise InvalidOperation('Given operation is invalid.') #This is hardcoded, fix this
+            raise invalidOperation()
         else:
             if all([isinstance(parameter, (int, float)) for parameter in params]):
                 result = calc['operations'][operation](*params)
@@ -63,7 +54,7 @@ def perform_operation(calc, operation, params):
                 calc['history'].append((dt, operation, params, result))
                 return result
             else:
-                raise InvalidParams('Given params are invalid.') #This is hardcoded, fix this
+                raise InvalidParams()
 
 def add_new_operation(calc, operation):
     """
@@ -81,7 +72,7 @@ def add_new_operation(calc, operation):
                 else:
                     print('Skipping %s: %s exist in calculator.' % (operand, operand))
         else:
-            raise InvalidOperation('Given operation is invalid.') #This is hardcoded, fix this
+            raise InvalidOperation
 
 def get_operations(calc):
     """
