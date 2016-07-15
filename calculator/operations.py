@@ -7,7 +7,6 @@ def add(*args):
     current_sum = 0
     if len(args) > 0 :
         for item in args :
-            #print "ITEM IS : ", item
             current_sum = add_numbers(current_sum, item)
         return current_sum
     else :

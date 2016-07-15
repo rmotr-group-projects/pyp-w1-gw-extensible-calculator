@@ -41,14 +41,12 @@ def perform_operation(calc, operation, params):
             raise InvalidParams('Given params are invalid.')
     
     to_do = calc['operations'][operation]
-    try : 
-        answer = to_do(*params)
-    except AttributeError :
-        raise InvalidParams('Given params are invalid.')
+    answer = to_do(*params)
     
     dt = datetime.datetime.now()
     date_and_time = dt.strftime("%Y-%m-%d %H:%M:%S")
     operation_history = (date_and_time, operation, params, answer)
+    
     calc['history'].append(operation_history)
     
     return answer
@@ -66,6 +64,7 @@ def add_new_operation(calc, operation):
         calc['operations'].update(operation)
     except :
         raise InvalidOperation("Given operation is invalid.")
+        
 
 def get_operations(calc):
     """
