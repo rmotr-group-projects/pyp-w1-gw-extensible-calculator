@@ -1,3 +1,4 @@
+from functools import reduce
 
 def add(*args):
     # your implementation here

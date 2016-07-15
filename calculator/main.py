@@ -54,7 +54,7 @@ def add_new_operation(calc, operation):
                       ie: {'add': add_function}
     """
     if type(operation) is dict:
-        calc['operations'][operation.keys()[0]] = operation.values()[0]
+        calc['operations'][list(operation.keys())[0]] = list(operation.values())[0]
     else:
         raise InvalidOperation('Given operation is invalid.')
 
