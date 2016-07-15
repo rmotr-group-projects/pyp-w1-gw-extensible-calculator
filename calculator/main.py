@@ -70,7 +70,7 @@ def get_history(calc):
         (:execution_time, :operation_name, :params, :result)
 
         ie:
-        ('2016-05-20 12:00:00', 'add', (1, 2), 3),
+        ('2016-05-20 12:00:00', 'add', (1, 2), 3)
     """
     return calc['history']
 
