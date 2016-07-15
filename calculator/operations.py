@@ -1,18 +1,29 @@
-
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args[:])   
 
 def subtract(*args):
-    # your implementation here
-    pass
-
+    return args[0] - sum(args[1:])
+   
 def multiply(*args):
-    # your implementation here
-    pass
+    value = args[0]
+    for item in args[1:]:
+        value *= item
+    return value
+    
 
 def divide(*args):
-    # your implementation here
-    pass
-
+    int_value = args[0]
+    float_value = args[0]
+    for item in args[1:]:
+        int_value /= item
+        float_value /= float(item)
+    if int_value != float_value:
+        return float_value
+    return int_value
+        
+    #if reduce(lambda x, y: x % y, args) == 0:
+      #  return reduce(lambda x, y: x / y, args)
+    #else:
+     #   return(reduce(lambda x, y: x / float(y), args))
+   
 # add your custom operations here
