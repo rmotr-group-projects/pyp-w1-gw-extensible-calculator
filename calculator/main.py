@@ -31,7 +31,6 @@ def check_integrity(calculator, check_calc=True):
         else:
             return True
     except CalculatorError as err:
-        print err.invalid_calc
         return False
 
 def check_arguments_for_error(argument, error_type):
