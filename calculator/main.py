@@ -1,8 +1,7 @@
-from __future__ import print_function
 from datetime import datetime
 
-from calculator.operations import *
-from calculator.exceptions import *
+from calculator.operations import add, multiply, subtract, divide, exponent
+from calculator.exceptions import InvalidParams, InvalidOperation
 
 def create_new_calculator(operations={}):
     
