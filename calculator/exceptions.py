@@ -1,7 +1,5 @@
-
-class InvalidOperation(Exception):
+class InvalidOperation(Exception): 
     pass
-
 
 class InvalidParams(Exception):
     pass
