@@ -88,7 +88,7 @@ def get_operations(calc):
     Returns the list of operation names supported by given calculator.
     """
     if check_integrity(calc):
-        return calc['operations'].keys()
+        return [key for key in calc['operations']]
 
 
 def get_history(calc):
