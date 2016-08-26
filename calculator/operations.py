@@ -24,7 +24,7 @@ def plot(*args):
     expression = args[0]
     plot_range = range(args[1], args[2] + 1)
     plot_points = map(lambda x: eval(expression), plot_range) 
-    return (plt(args[0], (x, args[1], args[2])), plot_points)
+    return (plt(args[0], (x, args[1], args[2])), list(plot_points))
 
 
 # add your custom operations here
