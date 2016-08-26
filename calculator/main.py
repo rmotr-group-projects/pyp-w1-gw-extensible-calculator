@@ -70,7 +70,7 @@ def add_new_operation(calc, operation):
 
 
 def get_operations(calc):
-    return calc['operations'].keys()
+    return list(calc['operations'].keys())
     """
     Returns the list of operation names supported by given calculator.
     """
