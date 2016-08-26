@@ -32,7 +32,7 @@ def perform_operation(calc, operation, params=None):
         raise InvalidOperation(operation)
     
     check_params = all(isinstance(x,(int,float)) for x in params)
-    if not check_params:
+    if not check_params and operation != 'plot':
         raise InvalidParams()
     
     if not params or (len(params) == 0):
