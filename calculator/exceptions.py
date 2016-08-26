@@ -1,6 +1,6 @@
 
 class InvalidOperation(Exception):
-    pass
+    pass 
 
 
 class InvalidParams(Exception):
