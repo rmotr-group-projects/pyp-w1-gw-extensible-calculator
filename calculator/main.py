@@ -1,7 +1,7 @@
 from datetime import datetime
 import time
-from operations import add, subtract, multiply, divide
-from exceptions import * 
+from .operations import add, subtract, multiply, divide
+from .exceptions import * 
 
 
 def create_new_calculator(operations = None):
