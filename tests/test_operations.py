@@ -36,7 +36,7 @@ class TestCalculatorOperations(unittest.TestCase):
     
     
     def test_plot(self):
-        self.assertEqual(plot('x**2', -2, 2)[1], [4, 1, 0, 1, 4])
-        self.assertEqual(plot('x**2-10/2', -2, 2)[1], [-1, -4, -5, -4, -1])
+        self.assertEqual(plot('x**2', -2, 2), [4, 1, 0, 1, 4])
+        self.assertEqual(plot('x**2-10/2', -2, 2), [-1, -4, -5, -4, -1])
         self.assertEqual(plot('x**2', 2), None)
     # implement extra tests for your custom operations

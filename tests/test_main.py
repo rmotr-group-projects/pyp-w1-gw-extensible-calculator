@@ -59,7 +59,7 @@ class TestCalculator(unittest.TestCase):
         plot_calc = create_new_calculator()
         add_new_operation(plot_calc, operation={'plot': plot})
         plot_val = perform_operation(plot_calc, 'plot', ('x**2-10/2', -2, 2))
-        self.assertEqual(plot_val[1], [-1, -4, -5, -4, -1])
+        self.assertEqual(plot_val, [-1, -4, -5, -4, -1])
 
     def test_perform_operation_invalid_params(self):
         with self.assertRaisesRegexp(InvalidParams,

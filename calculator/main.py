@@ -5,7 +5,7 @@ from calculator.exceptions import *
 
 # xyz = create_new
 
-def create_new_calculator(operations={}):
+def create_new_calculator(operations=None):
     """
     Creates a configuration dict for a new calculator. Optionally pre loads an
     initial set of operations. By default a calculator with no operations
@@ -13,6 +13,8 @@ def create_new_calculator(operations={}):
     :param operations: Dict with initial operations.
                        ie: {'sum': sum_function, ...}
     """
+    if not operations:
+        operations={}
     calc_dict = { 'operations': operations, 'history': [] } 
     return calc_dict
 
@@ -30,19 +32,18 @@ def perform_operation(calc, operation, params=None):
     """
     if operation not in get_operations(calc):
         raise InvalidOperation(operation)
+    if not params:
+        raise InvalidParams()
     
-    check_params = all(isinstance(x,(int,float)) for x in params)
+    check_params = all(isinstance(x, (int, float)) for x in params)
+    
     if not check_params and operation != 'plot':
         raise InvalidParams()
-    
-    if not params or (len(params) == 0):
-        raise InvalidParams()
-    
-    
+
     return_val = calc['operations'][operation](*params)
-    if return_val:
-        calc['history'].append((datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
-                                operation, params, return_val ))
+    
+    calc['history'].append((datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
+                            operation, params, return_val ))
     return return_val
     #pass
 
@@ -96,7 +97,7 @@ def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
-    if len(calc['history']) == 0:
+    if not (calc['history']):
         return None
     
     _,_,_,return_val = calc['history'][-1]
