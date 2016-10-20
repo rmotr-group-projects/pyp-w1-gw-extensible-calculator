@@ -27,7 +27,10 @@ def perform_operation(calc, operation, params):
         res = perform_operation(self.calc, 'add', (5, 3))
         self.assertEqual(res, 8)
     """
-    # import ipdb; ipdb.set_trace() 
+    def add_to_history():
+        calc['history'].append([datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params])
+    
+    add_to_history()
     return calc['operations'].get(operation)(*params)
 
 
@@ -64,16 +67,11 @@ def get_history(calc):
         ie:
         ('2016-05-20 12:00:00', 'add', (1, 2), 3),
     """
-    # history = ()
-    # return history
-    pass
+    return calc['history']
 
 
 def reset_history(calc):
-    # set calc history to = []
-    # import ipdb; ipdb.set_trace()    
-    # return []
-    pass
+    calc['history'] = []
 
 def repeat_last_operation(calc):
     """
