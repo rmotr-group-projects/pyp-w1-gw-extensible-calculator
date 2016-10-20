@@ -1,7 +1,6 @@
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
     # your implementation here
