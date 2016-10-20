@@ -16,8 +16,11 @@ def multiply(*args):
     return total
 
 def divide(*args):
-    # your implementation here
-    pass
+    total = args[0]
+    for number in args[1:]:
+       total /= number
+       
+    return total
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 

@@ -5,16 +5,12 @@ from calculator.exceptions import *
 
 
 def create_new_calculator(operations=None):
-    """
-    Creates a configuration dict for a new calculator. Optionally pre loads an
-    initial set of operations. By default a calculator with no operations
-    is created. Returns a dict containing operations(dict) and history(list).
-
-    :param operations: Dict with initial operations.
-                       ie: {'sum': sum_function, ...}
-    """
-    pass
-
+    dictionary = {
+            'operations': {},
+            'history': []
+            }
+    
+    return dictionary
 
 def perform_operation(calc, operation, params):
     """
@@ -62,11 +58,8 @@ def get_history(calc):
 
 
 def reset_history(calc):
-    """
-    Resets the calculator history back to an empty list.
-    """
+    # set calc history to = []
     pass
-
 
 def repeat_last_operation(calc):
     """
