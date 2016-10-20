@@ -14,6 +14,7 @@ def create_new_calculator(operations={}):
 
 def perform_operation(calc, operation, params):
     """
+    
     Executes given operation with given params. It returns the result of the
     operation execution.
 
@@ -21,8 +22,13 @@ def perform_operation(calc, operation, params):
     :param operation: String with the operation name. ie: 'add'
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
+                   
+    def test_perform_operation(self):
+        res = perform_operation(self.calc, 'add', (5, 3))
+        self.assertEqual(res, 8)
     """
-    pass
+    # import ipdb; ipdb.set_trace() 
+    return calc['operations'].get(operation)(*params)
 
 
 def add_new_operation(calc, operation):
@@ -32,7 +38,10 @@ def add_new_operation(calc, operation):
     :param calc: A calculator.
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
+                       add_new_operation(self.calc, operation={'add': self.add})
     """
+    # import ipdb; ipdb.set_trace()
+    calc['operations'].update(operation)
     pass
 
 
@@ -54,11 +63,15 @@ def get_history(calc):
         ie:
         ('2016-05-20 12:00:00', 'add', (1, 2), 3),
     """
+    # history = ()
+    # return history
     pass
 
 
 def reset_history(calc):
     # set calc history to = []
+    # import ipdb; ipdb.set_trace()    
+    # return []
     pass
 
 def repeat_last_operation(calc):
@@ -66,3 +79,4 @@ def repeat_last_operation(calc):
     Returns the result of the last operation executed in the history.
     """
     pass
+
