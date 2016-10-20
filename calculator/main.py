@@ -4,9 +4,9 @@ from calculator.operations import *
 from calculator.exceptions import *
 
 
-def create_new_calculator(operations=None):
+def create_new_calculator(operations={}):
     dictionary = {
-            'operations': {},
+            'operations': operations,
             'history': []
             }
     
