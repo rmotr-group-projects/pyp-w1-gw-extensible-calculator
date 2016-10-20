@@ -27,11 +27,12 @@ def perform_operation(calc, operation, params):
         res = perform_operation(self.calc, 'add', (5, 3))
         self.assertEqual(res, 8)
     """
-    def add_to_history():
-        calc['history'].append([datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params])
+    def add_to_history(op_result):
+        calc['history'].append((datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, op_result))
     
-    add_to_history()
-    return calc['operations'].get(operation)(*params)
+    result = calc['operations'].get(operation)(*params)
+    add_to_history(result)
+    return result
 
 
 def add_new_operation(calc, operation):
