@@ -59,8 +59,8 @@ def add_new_operation(calc, operation):
     """
     if type(operation) != dict:
         raise InvalidOperation("Given operation is invalid.")
-    key = operation.keys()[0]
-    value = operation.values()[0]
+    key = list(operation.keys())[0]
+    value = list(operation.values())[0]
     calc['operations'][key] = value
 
 
