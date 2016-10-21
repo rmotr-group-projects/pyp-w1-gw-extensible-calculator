@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import division
-
 import unittest
 
 from freezegun import freeze_time

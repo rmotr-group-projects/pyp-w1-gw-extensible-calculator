@@ -1,5 +1,3 @@
-from __future__ import division
-
 from datetime import datetime
 
 from calculator.operations import *
@@ -54,7 +52,6 @@ def add_new_operation(calc, operation):
     else:
         raise InvalidOperation("Given operation is invalid.")
 
-
 def get_operations(calc):
     return list(calc['operations'].keys())
     """
@@ -85,4 +82,3 @@ def repeat_last_operation(calc):
         return None 
 
     return calc['history'][-1][-1]
-
