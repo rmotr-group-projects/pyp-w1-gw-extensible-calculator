@@ -9,7 +9,7 @@ def create_new_calculator(operations={}):
             'operations': operations,
             'history': []
             }
-    
+ 
     return dictionary
 
 def perform_operation(calc, operation, params):
@@ -32,6 +32,7 @@ def perform_operation(calc, operation, params):
     
     result = calc['operations'].get(operation)(*params)
     add_to_history(result)
+
     return result
 
 
@@ -44,9 +45,10 @@ def add_new_operation(calc, operation):
                       ie: {'add': add_function}
                        add_new_operation(self.calc, operation={'add': self.add})
     """
-    # import ipdb; ipdb.set_trace()
-    calc['operations'].update(operation)
-    pass
+    if type(operation) == dict:
+        calc['operations'].update(operation)
+    else:
+        raise InvalidOperation("Given operation is invalid.")
 
 
 def get_operations(calc):
@@ -54,8 +56,6 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    
-
 
 def get_history(calc):
     """
@@ -70,7 +70,6 @@ def get_history(calc):
     """
     return calc['history']
 
-
 def reset_history(calc):
     calc['history'] = []
 
@@ -80,5 +79,6 @@ def repeat_last_operation(calc):
     """
     if len(calc['history']) == 0:
         return None 
+
     return calc['history'][-1][-1]
 

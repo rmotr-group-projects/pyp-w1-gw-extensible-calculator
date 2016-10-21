@@ -26,5 +26,3 @@ def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
     pass
-
-# add your custom operations here
