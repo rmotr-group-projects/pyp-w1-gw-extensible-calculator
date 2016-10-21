@@ -30,7 +30,7 @@ def perform_operation(calc, operation, params):
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
     """
-    return calc['operations'][operation](params)
+    return calc['operations'][operation](*params)
     
 def add_new_operation(calc, operation):
     """
