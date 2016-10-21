@@ -40,7 +40,7 @@ def perform_operation(calc, operation, params):
     else:
         result = calc['operations'][operation](*params)
         
-        calc['history'].append(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, result)
+        calc['history'].append((datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, result))
         
         return result
 
@@ -81,11 +81,14 @@ def reset_history(calc):
     """
     Resets the calculator history back to an empty list.
     """
-    pass
+    calc['history']= []
 
 
 def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
-    pass
+    try:
+        #return last operation
+    except:
+        return None
