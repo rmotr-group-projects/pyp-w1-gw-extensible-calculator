@@ -20,6 +20,7 @@ def create_new_calculator(operations=None):
     
     return calc
 
+
 def perform_operation(calc, operation, params):
     """
     Executes given operation with given params. It returns the result of the
@@ -30,7 +31,19 @@ def perform_operation(calc, operation, params):
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
     """
-    return calc['operations'][operation](*params)
+    if not operation in calc['operations']:
+        raise InvalidOperation('Given operation is invalid.')
+    
+    elif not params or not all(isinstance(x, (int,float)) for x in params):
+        raise InvalidParams('Given params are invalid.')
+    
+    else:
+        result = calc['operations'][operation](*params)
+        
+        calc['history'].append(datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, result)
+        
+        return result
+
     
 def add_new_operation(calc, operation):
     """
@@ -47,8 +60,8 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    pass
-
+    return list(calc['operations'].keys())
+    
 
 def get_history(calc):
     """
@@ -61,7 +74,7 @@ def get_history(calc):
         ie:
         ('2016-05-20 12:00:00', 'add', (1, 2), 3),
     """
-    pass
+    return calc['history']
 
 
 def reset_history(calc):
