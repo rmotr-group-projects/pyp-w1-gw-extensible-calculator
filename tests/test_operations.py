@@ -35,3 +35,8 @@ class TestCalculatorOperations(unittest.TestCase):
         self.assertEqual(divide(12, 2, 3), 2)
 
     # implement extra tests for your custom operations
+    
+    def test_plot(self):
+        from sympy.plotting.plot import Plot
+        my_plot = plot('-x**2', -2, 2)
+        self.assertIsInstance(my_plot, Plot)

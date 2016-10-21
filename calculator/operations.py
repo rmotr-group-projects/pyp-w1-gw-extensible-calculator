@@ -1,23 +1,34 @@
+from sympy import plot as symplot
+from functools import reduce
 
 def add(*args):
-    # your implementation here
-    pass
+    # Returns the sum of numbers
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    # Returns the subtraction of numbers
+    return args[0] - sum(args[1:])
 
 def multiply(*args):
-    # your implementation here
-    pass
+    # Returns the multiplication of numbers
+    return reduce(lambda x,y: x*y, args)
 
 def divide(*args):
-    # your implementation here
-    pass
+    #  Returns the division of numbers
+    total = float(args[0])
+    print (total)
+    for i in args[1:]:
+        total = total / i
+        print(total, i)
+    return total
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
-    pass
+    my_plot = symplot(args[0], ('x', args[1], args[2]))
+    print(my_plot)
+    return my_plot
 
 # add your custom operations here
+
+plot('-x**2', -2, 2)
