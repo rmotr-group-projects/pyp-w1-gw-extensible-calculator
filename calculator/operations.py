@@ -15,7 +15,7 @@ def multiply(*args):
 def divide(*args):
     return reduce(lambda x, y: x/y, args)
 
-def plot(*args):
+def our_plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
     pass
