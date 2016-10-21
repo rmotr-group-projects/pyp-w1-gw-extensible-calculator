@@ -16,7 +16,7 @@ def multiply(*args):
     return total
 
 def divide(*args):
-    total = args[0]
+    total = float(args[0])
     for number in args[1:]:
        total /= number
        
