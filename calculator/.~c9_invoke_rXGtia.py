@@ -27,26 +27,26 @@ def perform_operation(calc, operation, params):
         res = perform_operation(self.calc, 'add', (5, 3))
         self.assertEqual(res, 8)
     """
-    for param in params:
-        if type(param) not in [float, int]:
-            raise InvalidParams('Given params are invalid.')
-    
     def add_to_history(op_result):
         calc['history'].append((datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, op_result))
     
-    result = calc['operations'].get(operation)(*params)
+    try: 
+        result = calc['operations'].get(operation)(*params)
+    except Exception:
+        raise InvalidParams()
+        
+    
     add_to_history(result)
+    
+        
     return result
-    
-    
-
 
 
 def add_new_operation(calc, operation):
     """
     Adds given operation to the list of supported operations for given calculator.
 
-    :param calc: A calculator.
+    return list(calc['operations'].keys())
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
                        add_new_operation(self.calc, operation={'add': self.add})

@@ -27,19 +27,19 @@ def perform_operation(calc, operation, params):
         res = perform_operation(self.calc, 'add', (5, 3))
         self.assertEqual(res, 8)
     """
-    for param in params:
-        if type(param) not in [float, int]:
-            raise InvalidParams('Given params are invalid.')
-    
     def add_to_history(op_result):
         calc['history'].append((datetime.now().strftime('%Y-%m-%d %H:%M:%S'), operation, params, op_result))
     
-    result = calc['operations'].get(operation)(*params)
+    try: 
+        result = calc['operations'].get(operation)(*params)
+    except Exception:
+        raise InvalidParams()
+        
+    
     add_to_history(result)
+    
+        
     return result
-    
-    
-
 
 
 def add_new_operation(calc, operation):
@@ -67,7 +67,7 @@ def get_history(calc):
     """
     Returns the history of the executed operations since the last reset or
     since the calculator creation.
-
+    # import ipdb ]] ipdb.set_trace()  
     History items must have the following format:
         (:execution_time, :operation_name, :params, :result)
 
