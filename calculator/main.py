@@ -53,7 +53,10 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
-    return calc['operations'].update(operation)
+    if not isinstance(operation, dict):
+        raise InvalidOperation('Given operation is invalid.')
+    else:
+        return calc['operations'].update(operation)
 
 
 def get_operations(calc):
@@ -72,7 +75,7 @@ def get_history(calc):
         (:execution_time, :operation_name, :params, :result)
 
         ie:
-        ('2016-05-20 12:00:00', 'add', (1, 2), 3),
+        ('2016-05-20  12:00:00', 'add', (1, 2), 3),
     """
     return calc['history']
 
@@ -89,6 +92,7 @@ def repeat_last_operation(calc):
     Returns the result of the last operation executed in the history.
     """
     try:
-        #return last operation
+        return calc['history'][-1][-1]
+        
     except:
         return None

@@ -32,7 +32,7 @@ setup(
     packages=['calculator'],
     maintainer='rmotr.com',
     tests_require=[
-        'pytest==2.9.2',
+        'pytest==3.0.3',
         'pytest-cov==2.2.1',
         'coverage==4.0.3',
         'freezegun==0.3.7',

@@ -1,3 +1,4 @@
+from __future__ import division
 from functools import reduce
 
 def add(*args):
