@@ -3,7 +3,6 @@ import time
 from calculator.operations import *
 from calculator.exceptions import *
 
-
 def create_new_calculator(operations=None):
     """
     Creates a configuration dict for a new calculator. Optionally pre loads an
@@ -30,6 +29,8 @@ def perform_operation(calc, operation, params):
                    ie: (1, 2, 3, 4.5, -2)
     """
     now = time.strftime("%Y-%m-%d %H:%M:%S")
+    if operation == 'plot':
+        return plot_op(*params)
     try:
         res = calc['operations'][operation](*params)
     except KeyError:
