@@ -1,19 +1,17 @@
+from functools import reduce
+import operator as op
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    return reduce(op.sub, args)
 
 def multiply(*args):
-    # your implementation here
-    pass
+    return reduce(op.mul, args)
 
 def divide(*args):
-    # your implementation here
-    pass
+    return reduce(op.truediv, args)
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
