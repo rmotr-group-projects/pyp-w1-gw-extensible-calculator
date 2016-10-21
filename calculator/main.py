@@ -8,8 +8,8 @@ def create_new_calculator(operations={}):
     dictionary = {
             'operations': operations,
             'history': []
-            }
- 
+        }
+        
     return dictionary
 
 def perform_operation(calc, operation, params):
@@ -45,7 +45,7 @@ def add_new_operation(calc, operation):
                       ie: {'add': add_function}
                        add_new_operation(self.calc, operation={'add': self.add})
     """
-    if type(operation) == dict:
+    if type(operation) == dict and callable(list(operation.values())[0]):
         calc['operations'].update(operation)
     else:
         raise InvalidOperation("Given operation is invalid.")
