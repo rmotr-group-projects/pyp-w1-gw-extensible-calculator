@@ -1,3 +1,5 @@
+from __future__ import division
+
 from datetime import datetime
 
 from calculator.operations import *
@@ -37,10 +39,6 @@ def perform_operation(calc, operation, params):
     result = calc['operations'].get(operation)(*params)
     add_to_history(result)
     return result
-    
-    
-
-
 
 def add_new_operation(calc, operation):
     """
