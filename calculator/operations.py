@@ -1,19 +1,34 @@
+from __future__ import division
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    if len(args) is 1:
+        return args[0]
+    else:
+        res = args[0]
+        for n in args[1:]:
+            res -= n
+        return res
 
 def multiply(*args):
-    # your implementation here
-    pass
+    if len(args) is 1:
+        return args[0]
+    else:
+        res = args[0]
+        for n in args[1:]:
+            res *= n
+        return res
 
 def divide(*args):
-    # your implementation here
-    pass
+    if len(args) is 1:
+        return args[0]
+    else:
+        res = args[0]
+        for n in args[1:]:
+            res /= n
+        return res
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
