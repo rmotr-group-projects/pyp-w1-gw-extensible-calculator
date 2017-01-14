@@ -13,12 +13,12 @@ def create_new_calculator(operations=None):
     :param operations: Dict with initial operations.
                        ie: {'sum': sum_function, ...}
     """
-    
+
     calc = {
         'operations': {} if operations is None else operations,
         'history': [],
     }
-    
+
     return calc
 
 
@@ -34,8 +34,9 @@ def perform_operation(calc, operation, params):
     """
 
     if all(isinstance(n, (int, float)) for n in params):
-        result =  calc['operations'][operation](*params)
-        timestamp = (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), operation, params, result)
+        result = calc['operations'][operation](*params)
+        timestamp = (datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                     operation, params, result)
 
         calc['history'].append(timestamp)
         return result
@@ -51,12 +52,12 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
-    
+
     if isinstance(operation, dict):
         calc['operations'].update(operation)
     else:
         raise InvalidOperation("Given operation is invalid.")
-        
+
     return calc
 
 
@@ -94,5 +95,5 @@ def repeat_last_operation(calc):
     """
     if calc['history']:
         return calc['history'][-1][-1]
-    else: 
+    else:
         return None
