@@ -1,7 +1,8 @@
 import operator
 from functools import reduce 
-#from sympy import symbols, cos
-#from sympy.plotting import plot
+from sympy import symbols
+from sympy.plotting import plot as pl
+import re
 
 
 
@@ -25,19 +26,13 @@ def divide(*args):
     return answer
 
 def plot(*args):
-    pass
-    # OPTIONAL EXTRA CREDIT FUNCTION! 
-    # See README for info.
-    #sympy library
-    # args[0] = '-x**2' OR 'x*x'
-    
-    # plotvars = re.findall('[A-z]')
-    # #/^[A-z]+$/
-    # firstarg=arg[0]
-    # for i in firstarg:
-    
-    # x = symbol('the ltter in args[0]')
-    
-    # plot(args[0], xlim=(args[1],args[2]))
-    
-    #plot(sympy.symbols('x')**2, xlim=(-2,2))
+    	eqn = args[0]
+	lowerlim = args[1]
+	upperlim = args[2]
+	sym = ""
+	pattern = re.compile("[A-z]")
+	for i in eqn:
+		if pattern.match(i):
+			sym = i
+
+	return pl(eqn, (sym, lowerlim, upperlim))
