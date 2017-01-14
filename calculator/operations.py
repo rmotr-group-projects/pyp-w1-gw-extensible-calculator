@@ -1,23 +1,43 @@
+import operator
+from functools import reduce 
+#from sympy import symbols, cos
+#from sympy.plotting import plot
+
+
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    answer = args[0]
+    for item in args[1:]:
+        answer = answer - item
+    return answer
 
 def multiply(*args):
-    # your implementation here
-    pass
+    answer = reduce(operator.mul, (args), 1)
+    return answer
 
 def divide(*args):
-    # your implementation here
-    pass
+    answer = float(args[0])
+    for item in args[1:]:
+        answer = answer / float(item)
+    return answer
 
 def plot(*args):
+    pass
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
-    pass
-
-# add your custom operations here
+    #sympy library
+    # args[0] = '-x**2' OR 'x*x'
+    
+    # plotvars = re.findall('[A-z]')
+    # #/^[A-z]+$/
+    # firstarg=arg[0]
+    # for i in firstarg:
+    
+    # x = symbol('the ltter in args[0]')
+    
+    # plot(args[0], xlim=(args[1],args[2]))
+    
+    #plot(sympy.symbols('x')**2, xlim=(-2,2))
