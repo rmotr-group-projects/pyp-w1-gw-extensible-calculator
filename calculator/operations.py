@@ -26,13 +26,12 @@ def divide(*args):
     return answer
 
 def plot(*args):
-    	eqn = args[0]
-	lowerlim = args[1]
-	upperlim = args[2]
-	sym = ""
-	pattern = re.compile("[A-z]")
-	for i in eqn:
-		if pattern.match(i):
-			sym = i
-
-	return pl(eqn, (sym, lowerlim, upperlim))
+    eqn = args[0]
+    sym = ""
+    pattern = re.compile("[A-z]")
+    for i in eqn:
+        if pattern.match(i):
+            sym = i
+    
+    return pl(eqn, (sym, args[0], args[1]))
+    
