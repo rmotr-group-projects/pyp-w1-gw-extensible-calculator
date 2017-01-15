@@ -1,4 +1,7 @@
 from datetime import datetime
+#import sys
+#import os
+#sys.path.append(os.path.join(os.path.dirname(__file__), "..", "."))
 
 from calculator.operations import *
 from calculator.exceptions import *
@@ -31,17 +34,15 @@ def perform_operation(calc, operation, params):
     """
     
     if operation not in calc['operations'].keys():
-        raise InvalidOperation()
+        raise InvalidOperation('Given operation is invalid.')
     if not all(isinstance(x, (int, float)) for x in params):
-        raise InvalidParams()
+        raise InvalidParams("Given params are invalid.")
     if params == []:
-        raise InvalidParams()
-    #if ((not all(isinstance(x, (int, float))) for x in params) or (params == [])):
-    #   raise InvalidParams()
-    result = calc['operations'][operation](params)
+        raise InvalidParams('Given params are invalid.')
+    result = calc['operations'][operation](*params)
     # Example: ('2016-05-18 12:00:00', 'add', (1, 2, 3, 4), 10)
     d = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    calc['history'] += (d, operation, params, result)
+    calc['history'].append((d, operation, params, result))
     return result
 
 def add_new_operation(calc, operation):
@@ -52,14 +53,16 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
+    if not isinstance(operation, dict):
+       raise InvalidOperation('Given operation is invalid.')
     calc['operations'].update(operation)
+    return calc['operations']
 
 def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return calc['operation'].keys()
-
+    return list(calc['operations'].keys())
 
 def get_history(calc):
     """
@@ -86,6 +89,6 @@ def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
-    #
+    if calc['history'] == []:
+       return None
     return calc['history'][-1][3]
-
