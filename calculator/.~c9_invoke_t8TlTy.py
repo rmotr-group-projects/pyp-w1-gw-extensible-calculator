@@ -13,8 +13,6 @@ def create_new_calculator(operations=None):
     :param operations: Dict with initial operations.
                        ie: {'sum': sum_function, ...}
     """
-    if not operations:
-        operations = {}
     return {'operations': operations,'history': []}
     
     
@@ -32,12 +30,8 @@ def perform_operation(calc, operation, params):
     
     if operation not in calc['operations'].keys():
         raise InvalidOperation()
-    if not all(isinstance(x, (int, float)) for x in params):
+    if ((not all(isinstance(x, (int, float))) for x in params or (params == [])):
         raise InvalidParams()
-    if params == []:
-        raise InvalidParams()
-    #if ((not all(isinstance(x, (int, float))) for x in params) or (params == [])):
-    #   raise InvalidParams()
     result = calc['operations'][operation](params)
     # Example: ('2016-05-18 12:00:00', 'add', (1, 2, 3, 4), 10)
     d = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -59,7 +53,7 @@ def get_operations(calc):
     Returns the list of operation names supported by given calculator.
     """
     return calc['operation'].keys()
-
+    pass
 
 def get_history(calc):
     """
@@ -89,3 +83,7 @@ def repeat_last_operation(calc):
     #
     return calc['history'][-1][3]
 
+
+calc = create_new_calculator({'add': add, 'subtract': subtract})
+
+print(perform_operation(calc,'add',params=(1,2,3)))
