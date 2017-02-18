@@ -1,19 +1,21 @@
 
-def add(*args):
-    # your implementation here
-    pass
+#def add(*args):
+add = lambda first, *args: first + sum(args)
 
-def subtract(*args):
-    # your implementation here
-    pass
+#def subtract(*args):
+subtract = lambda first, *args: first - sum(args)
 
-def multiply(*args):
-    # your implementation here
-    pass
+def multiply(first, *args):
+	total = first
+	for num in args:
+		total *= num
+	return total
 
-def divide(*args):
-    # your implementation here
-    pass
+def divide(first, *args):
+    div = float(first)
+    for num in args:
+        div /= num
+    return div
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
@@ -21,3 +23,4 @@ def plot(*args):
     pass
 
 # add your custom operations here
+#PYTHONPATH=. py.test -s tests -k
