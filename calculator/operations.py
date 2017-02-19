@@ -1,19 +1,27 @@
 
 def add(*args):
-    # your implementation here
-    pass
+    sum = args[0]
+    for arg in args[1:]:
+        sum += arg
+    return sum
 
 def subtract(*args):
-    # your implementation here
-    pass
+    difference = args[0]
+    for arg in args[1:]:
+        difference -= arg
+    return difference
 
 def multiply(*args):
-    # your implementation here
-    pass
+    product = args[0]
+    for arg in args[1:]:
+        product *= arg
+    return product
 
 def divide(*args):
-    # your implementation here
-    pass
+    quotient = args[0]
+    for arg in args[1:]:
+        quotient /= float(arg)
+    return quotient
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
