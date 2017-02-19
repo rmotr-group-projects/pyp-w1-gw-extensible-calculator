@@ -3,6 +3,7 @@ from pprint import pprint
 from operations import *
 from exceptions import *
 
+        
 
 def create_new_calculator(operations={}):
     """
@@ -48,6 +49,9 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
+    if not isinstance(operation, dict):
+        raise InvalidOperation('Given operation is invalid.')
+    
     calc['operations'].update(operation)
 
 
