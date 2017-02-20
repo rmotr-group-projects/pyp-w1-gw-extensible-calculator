@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from operations import *
-from exceptions import *
+from calculator.operations import *
+from calculator.exceptions import *
 
 def create_new_calculator(operations=None): #pass in operations
     """

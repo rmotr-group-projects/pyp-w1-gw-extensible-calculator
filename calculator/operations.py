@@ -22,9 +22,9 @@ def divide(*args):
         ans /= num
     return ans
 
-def plot(*args):
+#def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
-    passgit 
+    # pass
 
 # add your custom operations here
