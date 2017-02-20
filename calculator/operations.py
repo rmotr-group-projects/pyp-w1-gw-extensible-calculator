@@ -25,6 +25,6 @@ def divide(*args):
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
-    pass
+    passgit 
 
 # add your custom operations here
