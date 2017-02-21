@@ -36,16 +36,16 @@ class TestCalculator(unittest.TestCase):
         res = perform_operation(self.calc, 'add', (5, 3))
         self.assertEqual(res, 8)
 
-    # def test_perform_operation_variable_arguments(self):
-    #     def multi_sum(*args):
-    #         return sum(args)
-    #     add_new_operation(self.calc, operation={'multi_sum': multi_sum})
-    #     self.assertEqual(
-    #         perform_operation(self.calc, 'multi_sum', (1, )), 1)
-    #     self.assertEqual(
-    #         perform_operation(self.calc, 'multi_sum', (1, 2, 3)), 6)
-    #     self.assertEqual(
-    #         perform_operation(self.calc, 'multi_sum', (1, 2, 3, 4, 5)), 15)
+    def test_perform_operation_variable_arguments(self):
+        def multi_sum(*args):
+            return sum(args)
+        add_new_operation(self.calc, operation={'multi_sum': multi_sum})
+        self.assertEqual(
+            perform_operation(self.calc, 'multi_sum', (1, )), 1)
+        self.assertEqual(
+            perform_operation(self.calc, 'multi_sum', (1, 2, 3)), 6)
+        self.assertEqual(
+            perform_operation(self.calc, 'multi_sum', (1, 2, 3, 4, 5)), 15)
 
     def test_perform_operation_types(self):
         res = perform_operation(self.calc, 'add', (5, 3.5))

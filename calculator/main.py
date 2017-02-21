@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from operations import *
-from exceptions import *
+from calculator.operations import *
+from calculator.exceptions import *
 
 def create_new_calculator(operations=None):
     """
@@ -29,8 +29,8 @@ def perform_operation(calc, operation, params):
     """
     try:
         # operation performing 
-        operation_call = eval(operation)
-        answer = operation_call(*params)
+        op_name = calc['operations'][operation]
+        answer = op_name(*params)
         
         #history making 
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
