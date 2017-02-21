@@ -5,8 +5,7 @@ def add(*args):
     lst.extend(*args)
     return sum(lst)
     
-    
-'''
+   
 def subtract(*args):
     first = 0
     for i in *args:
@@ -39,17 +38,17 @@ def divide(*args):
             total = (total/i)
             
     return total
+'''  
+def plot(*args):
+    # OPTIONAL EXTRA CREDIT FUNCTION! 
+    # See README for info.
     pass
+
+# add your custom operations here
+def plot(*args):
+    # OPTIONAL EXTRA CREDIT FUNCTION! 
+    # See README for info.
+    pass
+
+# add your custom operations here
 '''
-def plot(*args):
-    # OPTIONAL EXTRA CREDIT FUNCTION! 
-    # See README for info.
-    pass
-
-# add your custom operations here
-def plot(*args):
-    # OPTIONAL EXTRA CREDIT FUNCTION! 
-    # See README for info.
-    pass
-
-# add your custom operations here
