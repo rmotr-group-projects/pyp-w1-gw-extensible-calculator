@@ -56,7 +56,8 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return calc['operations'].keys()
+    operation_key = calc['operations'].keys()
+    return operation_key
 
 
 def get_history(calc):
