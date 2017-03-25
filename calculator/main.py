@@ -1,8 +1,5 @@
-from __future__ import division
 from datetime import datetime
 
-
-from operations import *
 from exceptions import *
 
 def create_new_calculator(operations=None):
