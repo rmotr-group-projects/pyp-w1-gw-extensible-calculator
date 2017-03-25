@@ -1,4 +1,5 @@
-from operator import add,sub,mul 
+from operator import sub,mul 
+from functools import reduce
 
 def add(*args):
     # your implementation here
