@@ -1,19 +1,23 @@
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
-
+    return args[0] - sum(args[1:])
+    
 def multiply(*args):
-    # your implementation here
-    pass
+    total = 1
+    for arg in args:
+        total *= arg
+    return total
 
 def divide(*args):
-    # your implementation here
-    pass
+    total = args[0]
+    for i, arg in enumerate(args):
+        if i == 0:
+            continue
+        total /= float(arg)
+    return total
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 

@@ -1,9 +1,7 @@
-from __future__ import division
 from datetime import datetime
 
-
-from operations import *
-from exceptions import *
+#from calculator.operat ions import *
+#from calculator.exceptions import *
 
 def create_new_calculator(operations=None):
     """
@@ -29,20 +27,13 @@ def perform_operation(calc, operation, params):
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
     """
-   
-   
-    if not type(params) is tuple: 
-        raise InvalidParams('Given params are invalid.')
-    elif not params:
-        raise InvalidParams('Given params are invalid.')
-    elif not operation in calc['operations']:
+    if not operation in calc['operations']:
         raise InvalidOperation('{} not supported'.format(operation))
-    for value in params:
-        if not isinstance(value, (int,float)):
-            raise InvalidParams('Given params are invalid.')
-
-    execution_time = datetime.now().strftime("%Y-%m-%d %I:%M:%S")
-    result = calc['operations'][operation](*params)
+    elif params is False:
+        raise InvalidParams('Given params are invalid')
+    
+    execution_time = datetime.datetime.now().strftime("%Y-%m-%d %I:%M:%S")
+    result = calc[operation](params)
     calc['history'].append((execution_time, operation, params, result))
     return result
 
@@ -55,8 +46,6 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
-    if not type(operation) is dict:
-        raise InvalidOperation('Given operation is invalid.')
     calc['operations'].update(operation)
     return "New operation added"
 
@@ -81,7 +70,7 @@ def get_history(calc):
     
     return calc['history']
 
-
+    calc['history'] = []
 def reset_history(calc):
     """
     Resets the calculator history back to an empty list.
@@ -94,6 +83,5 @@ def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history."""
     
-    if not calc['history']:
-        return None
-    return perform_operation(calc, calc['history'][-1][1], calc['history'][-1][2])
+    perform_operation(calc, calc[history][-1][1], calc[history][-1][2])
+  
