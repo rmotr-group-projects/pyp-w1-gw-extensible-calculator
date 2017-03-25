@@ -19,7 +19,7 @@ def divide(*args):
     try:
         result = reduce((lambda x,y: float(x)/y),args)
     except ZeroDivisionError:
-        print "Division by zero!"
+        print("Division by zero!")
     
     return result
 
