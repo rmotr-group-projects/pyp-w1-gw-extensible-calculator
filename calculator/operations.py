@@ -1,25 +1,26 @@
+from calculator.exceptions import *
 
 def add(*args):
     # your implementation here
-    if len(args) <= 1:
+    if len(args) < 1:
         raise InvalidParams()
     for i in args:
-        if not isinstance(i, int) or not isinstance(i, float):
+        if not isinstance(i, int) and not isinstance(i, float):
             raise InvalidParams()
     return sum(args)
 
 def subtract(*args):
     # your implementation here
-    if len(args) <= 1:
+    if len(args) < 1:
         raise InvalidParams()
     for i in args:
-        if not isinstance(i, int) or not isinstance(i, float):
+        if not isinstance(i, int) and not isinstance(i, float):
             raise InvalidParams()
     return args[0] - sum(args[1:])
 
 def multiply(*args):
     # your implementation here
-    if len(args) <= 1:
+    if len(args) < 1:
         raise InvalidParams()
     result = 1
     for i in args:
@@ -28,11 +29,13 @@ def multiply(*args):
 
 def divide(*args):
     # your implementation here
-    if len(args) !=2:
-        raise InvalidOperation()
-    if args[1] == 0:
+    if len(args) < 1:
         raise InvalidParams()
-    return args[0] / arg[1]
+    if len(args) == 1:
+        return args[0]
+    if 0 in args[1:]:
+        raise InvalidParams()
+    return args[0] / multiply(*args[1:])
 
 '''
 def plot(*args):

@@ -15,6 +15,8 @@ def create_new_calculator(operations=None):
     """
     calculator = {'operations':{}, 'history':[]}
     if operations is not None:
+        if not isinstance(operations, dict):
+            raise InvalidParams()
         for key, value in operations.items():
             calculator['operations'][key] = value
     return calculator
@@ -33,10 +35,11 @@ def perform_operation(calc, operation, params):
     now = datetime.now()
     now_str = now.strftime('%Y-%m-%d %H:%M:%S')
     for i in params:
-        if not isinstance(i, int) or not isinstance(i, float):
+        if not isinstance(i, int) and not isinstance(i, float):
             raise InvalidParams()
     result = calc['operations'][operation](*params)
     calc['history'].append((now_str, operation, params, result))
+    
     return result
 
 
@@ -97,8 +100,8 @@ def repeat_last_operation(calc):
     Returns the result of the last operation executed in the history.
     """
     #First: retrieve info about the last informat
-    if len(calc['history']) == 0:
-        raise InvalidOperation
-        
-    _, operation, params, _ = calc['history'][-1]
-    perform_operation(calc, operation, params)
+    if len(calc['history']) > 0:
+        _, operation, params, _ = calc['history'][-1]
+        perform_operation(calc, operation, params)
+    else:
+        pass
