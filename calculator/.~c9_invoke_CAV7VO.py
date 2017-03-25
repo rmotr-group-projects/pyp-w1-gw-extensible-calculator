@@ -15,18 +15,10 @@ def create_new_calculator(operations=None):
                        ie: {'sum': sum_function, ...}
     """
     
-    if operations == None:
-        return {
+    return {
         'operations': {
 
         },
-        'history': [
-        ],
-        
-    }
-    else:
-        return {
-        'operations': operations,
         'history': [
         ],
         

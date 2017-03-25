@@ -15,18 +15,10 @@ def create_new_calculator(operations=None):
                        ie: {'sum': sum_function, ...}
     """
     
-    if operations == None:
-        return {
+    return {
         'operations': {
 
         },
-        'history': [
-        ],
-        
-    }
-    else:
-        return {
-        'operations': operations,
         'history': [
         ],
         
@@ -44,7 +36,7 @@ def perform_operation(calc, operation, params):
                    ie: (1, 2, 3, 4.5, -2)
     """
     if len(params) == 0:
-        raise InvalidParams("Parameters should not be empty")
+    calc.['operations'][operation]
     for item in params:
         if not (isinstance(item, int) or isinstance(item, float)):
             raise InvalidParams("Given params are invalid.")
