@@ -3,6 +3,8 @@ import unittest
 
 from calculator.operations import *
 from calculator.exceptions import *
+from sympy import symbols
+from sympy.plotting import textplot
 
 
 class TestCalculatorOperations(unittest.TestCase):
@@ -35,3 +37,6 @@ class TestCalculatorOperations(unittest.TestCase):
         self.assertEqual(divide(12, 2, 3), 2)
 
     # implement extra tests for your custom operations
+    def test_plot(self):
+        x = symbols('x')
+        self.assertEqual(plot('-x**2', -2, 2), textplot(-x**2,-2,2))

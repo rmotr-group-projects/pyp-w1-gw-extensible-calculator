@@ -16,7 +16,7 @@ class TestCalculator(unittest.TestCase):
 
     def test_create_new_calculator(self):
         subtract = lambda a, b: a - b
-        operations = {'add': self.add, 'subtract': subtract}
+        operations = {'add': self.add, 'subtract': subtract,}
         calc = create_new_calculator(operations=operations)
         expected = {
             'operations': operations,
@@ -115,3 +115,9 @@ class TestCalculator(unittest.TestCase):
     def test_repeate_last_operation_no_history(self):
         reset_history(self.calc)
         self.assertEqual(repeat_last_operation(self.calc), None)
+        
+    def test_plotting_graph(self):
+        x = symbols('x')
+        add_new_operation(self.calc, operation={'plot':plot})
+        perform_operation(self.calc, 'plot', params=('x**3', -5, 5))
+        self.assertEqual(plot('x**3', -5, 5), textplot(x**3,-5,5))
