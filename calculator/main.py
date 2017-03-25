@@ -3,7 +3,6 @@ from datetime import datetime
 from calculator.operations import *
 from calculator.exceptions import *
 
-
 def create_new_calculator(operations=None):
     """
     Creates a configuration dict for a new calculator. Optionally pre loads an
@@ -13,7 +12,14 @@ def create_new_calculator(operations=None):
     :param operations: Dict with initial operations.
                        ie: {'sum': sum_function, ...}
     """
-    pass
+    calculator = {
+        'operations': {},
+        'history': []
+    }
+    if operations != None:
+        calculator['operations'] = operations
+    return calculator
+    
 
 
 def perform_operation(calc, operation, params):
@@ -26,8 +32,28 @@ def perform_operation(calc, operation, params):
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
     """
-    pass
 
+    if operation not in calc['operations']:
+        raise InvalidOperation('Given operation is invalid.')
+    
+    # params is a tuple
+    # params contains only int or float
+    if not isinstance(params, tuple):
+        raise InvalidParams('Given params are invalid.')
+    for p in params:
+        if not isinstance(p, int) and not isinstance(p, float):
+            raise InvalidParams('Given params are invalid.')
+
+    # all good
+    output_op = calc['operations'][operation]
+    
+    # add operation to history
+    result = output_op(*params)
+    this_op = (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), operation, params, result)
+    calc['history'].append(this_op)
+    
+    return result
+    
 
 def add_new_operation(calc, operation):
     """
@@ -37,14 +63,19 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
-    pass
+    if type(operation) is dict:
+        calc['operations'].update(operation)
+    else:
+        raise InvalidOperation('Given operation is invalid.')
 
 
 def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    pass
+    return list(calc['operations'].keys())
+        
+    
 
 
 def get_history(calc):
@@ -58,18 +89,23 @@ def get_history(calc):
         ie:
         ('2016-05-20 12:00:00', 'add', (1, 2), 3),
     """
-    pass
+    return calc['history'] 
 
 
 def reset_history(calc):
     """
     Resets the calculator history back to an empty list.
     """
-    pass
+    calc['history'] = []
 
 
 def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
-    pass
+    if calc['history']:
+        history = calc['history'][len(calc['history'])-1]
+        return history[len(history)-1]
+    else:
+        return None
+
