@@ -17,9 +17,6 @@ def multiply(*args):
 
 def divide(*args):
     quotient = functools.reduce(lambda x,y: float(x)/y, args)
-    quotient = round(quotient, 1)
-    if str(quotient)[2] == 0:
-        quotient = int(str(quotient[0]))
     return quotient
     
 
