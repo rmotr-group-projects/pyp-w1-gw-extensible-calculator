@@ -52,7 +52,7 @@ def add_new_operation(calc, operation):
                       ie: {'add': add_function}
     """
     if not isinstance(operation, dict):
-        raise InvalidParams
+        raise InvalidOperation()
         
     for key, value in operation.items():
         calc['operations'][key] = value
@@ -102,6 +102,4 @@ def repeat_last_operation(calc):
     #First: retrieve info about the last informat
     if len(calc['history']) > 0:
         _, operation, params, _ = calc['history'][-1]
-        perform_operation(calc, operation, params)
-    else:
-        pass
+        return perform_operation(calc, operation, params)

@@ -35,7 +35,7 @@ def divide(*args):
         return args[0]
     if 0 in args[1:]:
         raise InvalidParams()
-    return args[0] / multiply(*args[1:])
+    return 1.0 * args[0] / multiply(*args[1:])
 
 '''
 def plot(*args):
