@@ -1,19 +1,23 @@
+from operator import add,sub,mul 
 
 def add(*args):
     # your implementation here
-    pass
+    return reduce((lambda x, y: x + y), args)
 
 def subtract(*args):
     # your implementation here
-    pass
-
+    #return map((lambda x, y: x - y), args)
+    return reduce(sub,args)
+    
+    
 def multiply(*args):
     # your implementation here
-    pass
+    return reduce((lambda x, y: x * y), args)
 
 def divide(*args):
     # your implementation here
-    pass
+    #check to see if second or further arg is 0
+    return reduce((lambda x, y: float(x) / y), args)
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
