@@ -6,18 +6,10 @@ def subtract(*args):
     return args[0] - sum(args[1:])
     
 def multiply(*args):
-    total = 1
-    for arg in args:
-        total *= arg
-    return total
+    return reduce(lambda x, y: x * y, args, 1)
 
 def divide(*args):
-    total = args[0]
-    for i, arg in enumerate(args):
-        if i == 0:
-            continue
-        total /= float(arg)
-    return total
+    return reduce(lambda x, y: float(x) / y, args[1:], args[0])
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
