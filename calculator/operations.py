@@ -1,23 +1,37 @@
+import functools
+import operator
+from datetime import datetime
 
 def add(*args):
-    # your implementation here
-    pass
-
-def subtract(*args):
-    # your implementation here
-    pass
-
+    return sum(args)
+        
+subtract = lambda *args: args[0] - sum(args[1:])
+    
 def multiply(*args):
-    # your implementation here
-    pass
+    #product = 1
+    #for i in args[0]:
+        #product *= i
+    product = functools.reduce(lambda x, y: x*y, args)
+    return product
+    
 
 def divide(*args):
-    # your implementation here
-    pass
+    quotient = functools.reduce(lambda x,y: float(x)/y, args)
+    return quotient
+    
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
     pass
 
+def create_new_calculator(operations={}):
+    
+    if operations:
+        new_calc = {'operations': {k : v for k, v in operations.items()}, 'history': []}
+    else:
+        new_calc = {'operations': {}, 'history': []}
+
 # add your custom operations here
+
+
