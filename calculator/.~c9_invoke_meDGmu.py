@@ -15,18 +15,10 @@ def create_new_calculator(operations=None):
                        ie: {'sum': sum_function, ...}
     """
     
-    if operations == None:
-        return {
+    return {
         'operations': {
 
         },
-        'history': [
-        ],
-        
-    }
-    else:
-        return {
-        'operations': operations,
         'history': [
         ],
         
@@ -57,7 +49,7 @@ def perform_operation(calc, operation, params):
     date = dt.strftime("%Y-%m-%d %X")
     history = [date, operation, params, result]
     
-    #('2016-05-20 12:00:00', 'add', (1, 2), 3),
+    a_dic
     calc["history"].append(tuple(history))
     
     return result
@@ -82,7 +74,7 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return list(calc["operations"].keys())
+    return calc["operations"].keys()
 
 
 def get_history(calc):

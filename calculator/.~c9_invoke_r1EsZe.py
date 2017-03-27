@@ -15,18 +15,10 @@ def create_new_calculator(operations=None):
                        ie: {'sum': sum_function, ...}
     """
     
-    if operations == None:
-        return {
+    return {
         'operations': {
 
         },
-        'history': [
-        ],
-        
-    }
-    else:
-        return {
-        'operations': operations,
         'history': [
         ],
         
@@ -62,7 +54,7 @@ def perform_operation(calc, operation, params):
     
     return result
 
-
+    calc[]
 def add_new_operation(calc, operation):
     """
     Adds given operation to the list of supported operations for given calculator.
@@ -82,7 +74,7 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return list(calc["operations"].keys())
+    return calc["operations"].keys()
 
 
 def get_history(calc):
