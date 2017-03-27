@@ -1,19 +1,42 @@
 
 def add(*args):
-    # your implementation here
-    pass
+    output = 0
+    count = 0
+    for arg in args:
+        if count == 0:
+            output = arg
+        else:
+            output += arg
+        count += 1
+    return output
 
 def subtract(*args):
-    # your implementation here
-    pass
+    output = 0
+    count = 0
+    for arg in args:
+        if count == 0:
+            output = arg
+        else: 
+            output = output - arg
+        count += 1
+    return output
 
 def multiply(*args):
-    # your implementation here
-    pass
+    output=1
+    for arg in args:
+        output*=arg
+    return output
 
 def divide(*args):
-    # your implementation here
-    pass
+    count = 0
+    output = 0.0
+    for arg in args:
+        if count == 0:
+            output = arg * 1.0
+        else:
+            output = output / arg
+        count += 1
+    return output
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
@@ -21,3 +44,6 @@ def plot(*args):
     pass
 
 # add your custom operations here
+
+
+
