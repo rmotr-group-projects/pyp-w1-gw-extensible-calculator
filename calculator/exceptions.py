@@ -1,7 +1,10 @@
 
 class InvalidOperation(Exception):
-    pass
+    def __init__(self):
+        Exception.__init__(self, "Given operation is invalid.")
+    
 
 
 class InvalidParams(Exception):
-    pass
+    def __init__(self):
+        Exception.__init__(self, "Given params are invalid.")
