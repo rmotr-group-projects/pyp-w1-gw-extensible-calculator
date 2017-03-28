@@ -1,19 +1,23 @@
+from functools import reduce
 
 def add(*args):
     # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
     # your implementation here
-    pass
+    return args[0] - sum(args[1::])
 
 def multiply(*args):
     # your implementation here
-    pass
+    answer = 1
+    for nums in args:
+        answer *= nums
+    return answer
 
 def divide(*args):
     # your implementation here
-    pass
+    return reduce(lambda x, y: float(x) / y, args[1:], args[0])
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
