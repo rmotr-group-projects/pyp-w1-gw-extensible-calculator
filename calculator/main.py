@@ -12,7 +12,7 @@ def create_new_calculator(operations=None):
     :param operations: Dict with initial operations.
                        ie: {'sum': sum_function, ...}
     """
-    if operations is None:
+    if not operations:
         operations = {}
     calc = {'operations': operations, 'history': []}
     return calc
@@ -29,9 +29,7 @@ def perform_operation(calc, operation, params):
     """
    
    
-    if not type(params) is tuple: 
-        raise InvalidParams('Given params are invalid.')
-    elif not params:
+    if not isinstance(params,tuple): 
         raise InvalidParams('Given params are invalid.')
     elif not operation in calc['operations']:
         raise InvalidOperation('{} not supported'.format(operation))
@@ -53,7 +51,7 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
-    if not type(operation) is dict:
+    if not isinstance(operation, dict):
         raise InvalidOperation('Given operation is invalid.')
     calc['operations'].update(operation)
     return "New operation added"
@@ -85,7 +83,6 @@ def reset_history(calc):
     Resets the calculator history back to an empty list.
     """
     calc['history'] = []
-    return "History is Empty"
 
 
 def repeat_last_operation(calc):
@@ -94,4 +91,4 @@ def repeat_last_operation(calc):
     
     if not calc['history']:
         return None
-    return perform_operation(calc, calc['history'][-1][1], calc['history'][-1][2])
+    return calc['history'][-1][-1]
