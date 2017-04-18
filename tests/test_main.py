@@ -83,6 +83,7 @@ class TestCalculator(unittest.TestCase):
             ('2016-05-20 12:00:00', 'add', (1, 2), 3),
             ('2016-05-20 12:00:00', 'add', (5, 10), 15),
         ]
+        print(get_history(self.calc))
         self.assertEqual(get_history(self.calc), expected)
 
     def test_get_history_time_sorted(self):

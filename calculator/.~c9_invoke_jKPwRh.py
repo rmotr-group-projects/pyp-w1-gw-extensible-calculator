@@ -9,13 +9,12 @@ def create_new_calculator(operations=None):
     """
     Creates a configuration dict for a new calculator. Optionally pre loads an
     initial set of operations. By default a calculator with no operations
-    is created. Returns a dict containing operations(dict) and history(list).
+    is created.
 
     :param operations: Dict with initial operations.
                        ie: {'sum': sum_function, ...}
     """
-    if operations == None:
-        operations = {}
+
     
     calc = {
             'operations': operations,
@@ -36,7 +35,7 @@ def perform_operation(calc, operation, params):
                    ie: (1, 2, 3, 4.5, -2)
     """
     
-    try:
+        raise InvalidOperation()
         result = calc['operations'][operation](*params)
     except KeyError: #key not in dictionary
         raise InvalidOperation('Given operation is invalid.')
@@ -69,10 +68,6 @@ def add_new_operation(calc, operation):
                       ie: {'add': add_function}
     """
     
-        
-    if not isinstance(operation, dict):
-        raise InvalidOperation("Given operation is invalid.")
-        
     for key, value in operation.items():
         calc['operations'][key] = value
     
@@ -83,8 +78,8 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
+    return calc['operations'] #?
 
-    return [op for op in calc['operations'].keys()]
 
 def get_history(calc):
     """
@@ -117,4 +112,4 @@ def repeat_last_operation(calc):
     
     if calc['history'] == []:
         return None
-    return calc['history'][-1][3]
+    return calc['history'][-1][1]
