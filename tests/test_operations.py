@@ -35,3 +35,9 @@ class TestCalculatorOperations(unittest.TestCase):
         self.assertEqual(divide(12, 2, 3), 2)
 
     # implement extra tests for your custom operations
+    def test_noargs(self):
+        self.assertEqual(divide(), 0)
+        self.assertEqual(add(), 0)
+        self.assertEqual(subtract(), 0)
+        self.assertEqual(multiply(), 0)
+        
