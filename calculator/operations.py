@@ -1,19 +1,22 @@
-
+from __future__ import division
+from functools import *
 def add(*args):
-    # your implementation here
-    pass
+    #print("my args is {}".format(args))
+    result = reduce(lambda acc, y: acc + y, args, 0)
+    return result
 
 def subtract(*args):
     # your implementation here
-    pass
-
+    result = reduce(lambda acc, y: acc - y, args[1:], args[0])
+    return result
+    
 def multiply(*args):
-    # your implementation here
-    pass
+    result = reduce(lambda acc, y: acc * y, args, 1)
+    return result
 
 def divide(*args):
-    # your implementation here
-    pass
+     result = reduce(lambda acc, y: acc / y, args[1:], args[0])
+     return result
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
