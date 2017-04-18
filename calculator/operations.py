@@ -1,19 +1,21 @@
+from __future__ import division
+try:
+    from functools import reduce
+except ImportError:
+    pass
+from calculator.exceptions import *
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
-
+   return reduce(lambda x, y: x-y, args)
+   
 def multiply(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: x*y, args)
 
 def divide(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: x/y, args)
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
@@ -21,3 +23,22 @@ def plot(*args):
     pass
 
 # add your custom operations here
+
+def mod(*args):
+    """
+    Returns the result of first arg mod second arg
+    """
+    if len(args) != 2:
+        raise InvalidNumParams
+    else:
+        return args[0] % args[1]
+
+def factorial(*args):
+    """
+    Returns the factorial of a given number.
+    """
+    if len(args) != 1:
+        raise InvalidNumParams
+    else:
+        nums = [x for x in range(args[0])]
+        return multiply([nums])
