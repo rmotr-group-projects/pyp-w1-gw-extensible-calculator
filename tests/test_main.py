@@ -5,7 +5,7 @@ from freezegun import freeze_time
 
 from calculator.main import *
 from calculator.exceptions import *
-
+from calculator.operations import *
 
 class TestCalculator(unittest.TestCase):
 
@@ -54,6 +54,12 @@ class TestCalculator(unittest.TestCase):
     def test_perform_operation_negative_values(self):
         res = perform_operation(self.calc, 'add', (5, -2))
         self.assertEqual(res, 3)
+    
+    def test_perform_operation_plot(self):
+        plot_calc = create_new_calculator()
+        add_new_operation(plot_calc, operation={'plot': plot})
+        plot_val = perform_operation(plot_calc, 'plot', ('x**2-10/2', -2, 2))
+        self.assertEqual(plot_val, [-1, -4, -5, -4, -1])
 
     def test_perform_operation_invalid_params(self):
         with self.assertRaisesRegexp(InvalidParams,
@@ -115,3 +121,4 @@ class TestCalculator(unittest.TestCase):
     def test_repeate_last_operation_no_history(self):
         reset_history(self.calc)
         self.assertEqual(repeat_last_operation(self.calc), None)
+        
