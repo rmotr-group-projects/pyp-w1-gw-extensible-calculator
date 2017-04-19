@@ -3,7 +3,7 @@ from __future__ import division
 def add(*args):
         if len(args) == 1:
             print(args[0])
-            return args[0]
+            return args[]
         print (sum(args))
         return sum(args)
 
@@ -25,7 +25,7 @@ def divide(*args):
         return args[0]
     division=args[0]    
     for item in args[1::]:
-        division=division/item
+        division=divisio
     print (division)
     return division
 

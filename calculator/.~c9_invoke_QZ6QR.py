@@ -10,7 +10,7 @@ def add(*args):
 def subtract(*args):
         if len(args) == 1:
             print(args[0])
-        print (args[0] - sum(args[1::]))
+    try:
         return args[0] - sum(args[1::])
     
 def multiply(*args):

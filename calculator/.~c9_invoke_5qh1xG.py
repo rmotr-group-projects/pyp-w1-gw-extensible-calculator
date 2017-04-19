@@ -2,7 +2,7 @@ from __future__ import division
 
 def add(*args):
         if len(args) == 1:
-            print(args[0])
+    #try:
             return args[0]
         print (sum(args))
         return sum(args)

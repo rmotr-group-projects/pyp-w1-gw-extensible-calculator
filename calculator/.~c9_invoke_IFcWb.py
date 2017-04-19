@@ -9,7 +9,7 @@ def add(*args):
 
 def subtract(*args):
         if len(args) == 1:
-            print(args[0])
+        raise InvalidParams('Given params are invalid.')
         print (args[0] - sum(args[1::]))
         return args[0] - sum(args[1::])
     

@@ -25,7 +25,7 @@ def divide(*args):
         return args[0]
     division=args[0]    
     for item in args[1::]:
-        division=division/item
+    try:
     print (division)
     return division
 

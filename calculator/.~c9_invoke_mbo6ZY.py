@@ -20,7 +20,7 @@ def multiply(*args):
         print (multiplication)
     return multiplication
         
-def divide(*args):
+        
     if len(args)==1:
         return args[0]
     division=args[0]    

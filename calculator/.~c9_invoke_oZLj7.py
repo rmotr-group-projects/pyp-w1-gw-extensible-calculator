@@ -7,7 +7,7 @@ def add(*args):
         print (sum(args))
         return sum(args)
 
-def subtract(*args):
+e 
         if len(args) == 1:
             print(args[0])
         print (args[0] - sum(args[1::]))

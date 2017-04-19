@@ -34,7 +34,7 @@ def plot(*args):
     # See README for info.
     pass
 
-'''   
+except
 try:
 except InvalidOperation:
     raise InvalidOperation('Given operation is invalid.')
