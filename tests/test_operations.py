@@ -35,3 +35,6 @@ class TestCalculatorOperations(unittest.TestCase):
         self.assertEqual(divide(12, 2, 3), 2)
 
     # implement extra tests for your custom operations
+    def test_power(self):
+        self.assertEqual(power(2, 3), 8)
+        self.assertEqual(power(2, 3, 4), 4096)
