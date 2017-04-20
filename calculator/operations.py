@@ -1,21 +1,21 @@
+from __future__ import division
+from functools import reduce
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
-
+    if len(args) < 2:
+        return args[0]
+    return args[0] - sum(args[1:])
+    
 def multiply(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: x*y, args)
 
 def divide(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: x/y, args)
 
-def plot(*args):
+def our_plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
     pass
