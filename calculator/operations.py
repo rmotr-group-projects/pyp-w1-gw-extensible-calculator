@@ -1,19 +1,31 @@
+from functools import reduce
+import operator
+
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    if args:
+        answ = args[0]
+        for item in args[1:]:
+            answ = answ-item
+        return answ
+    else:
+        raise ArithmeticError
 
 def multiply(*args):
-    # your implementation here
-    pass
+    mult = reduce(operator.mul, args, 1)
+    return mult
 
 def divide(*args):
-    # your implementation here
-    pass
+    if args:
+        answ = float(args[0])
+        for item in args[1:]:
+            answ = answ/float(item)
+        return answ
+    else:
+        raise ArithmeticError
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
@@ -21,3 +33,5 @@ def plot(*args):
     pass
 
 # add your custom operations here
+
+#PYTHONPATH=. py.test tests/test_main.py
