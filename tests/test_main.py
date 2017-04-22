@@ -60,7 +60,7 @@ class TestCalculator(unittest.TestCase):
                                      'Given params are invalid.'):
             perform_operation(self.calc, 'add', (5, 'hello'))
 
-    def test_add_new_operations(self):
+    def test_add_new_operation(self):
         multiply = lambda a, b: a * b
         add_new_operation(self.calc, operation={'multiply': multiply})
         res = perform_operation(self.calc, 'multiply', (2, 3))
