@@ -1,22 +1,19 @@
+from functools import *
 
 def add(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: x + y, args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: x - y, args)
 
 def multiply(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: x * y, args)
 
 def divide(*args):
-    # your implementation here
-    pass
+    return reduce(lambda x, y: x / float(y), args)
 
 def plot(*args):
-    # OPTIONAL EXTRA CREDIT FUNCTION! 
+    # OPTIONAL EXTRA CREDIT FUNCTION!
     # See README for info.
     pass
 
