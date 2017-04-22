@@ -5,7 +5,7 @@ from freezegun import freeze_time
 
 from calculator.main import *
 from calculator.exceptions import *
-
+from calculator.operations import *
 
 class TestCalculator(unittest.TestCase):
 
@@ -27,7 +27,7 @@ class TestCalculator(unittest.TestCase):
     def test_create_new_calculator_empty_operations(self):
         calc = create_new_calculator()
         expected = {
-            'operations': {},
+            'operations': {}, # None
             'history': []
         }
         self.assertEqual(calc, expected)
