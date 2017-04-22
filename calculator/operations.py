@@ -1,23 +1,37 @@
+import operator
+from functools import reduce 
+from sympy import symbols
+from sympy.plotting import plot as pl
+import re
+
+
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    answer = args[0]
+    for item in args[1:]:
+        answer = answer - item
+    return answer
 
 def multiply(*args):
-    # your implementation here
-    pass
+    answer = reduce(operator.mul, (args), 1)
+    return answer
 
 def divide(*args):
-    # your implementation here
-    pass
+    answer = float(args[0])
+    for item in args[1:]:
+        answer = answer / float(item)
+    return answer
 
 def plot(*args):
-    # OPTIONAL EXTRA CREDIT FUNCTION! 
-    # See README for info.
-    pass
-
-# add your custom operations here
+    eqn = args[0]
+    sym = ""
+    pattern = re.compile("[A-z]")
+    for i in eqn:
+        if pattern.match(i):
+            sym = i
+    
+    return pl(eqn, (sym, args[0], args[1]))
+    
