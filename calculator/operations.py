@@ -1,19 +1,16 @@
-
+from functools import reduce
+from operator import mul,sub,truediv
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    return reduce(sub,args)
 
 def multiply(*args):
-    # your implementation here
-    pass
+    return reduce(mul,args)
 
 def divide(*args):
-    # your implementation here
-    pass
+    return reduce(truediv,args)
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
