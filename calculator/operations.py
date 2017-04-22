@@ -1,19 +1,28 @@
+from functools import reduce
+"""
+def check_input(*args):
+    if len(args) < 2:
+        print('Error - check')
+#        raise # some kind of error
+    else:
+        return args
+"""
 
 def add(*args):
-    # your implementation here
-    pass
+    return reduce((lambda x, y: x + y), args)
+    
 
 def subtract(*args):
-    # your implementation here
-    pass
+    return reduce((lambda x, y: x - y), args)
+
 
 def multiply(*args):
-    # your implementation here
-    pass
+    return reduce((lambda x, y: x * y), args)
+    
 
 def divide(*args):
-    # your implementation here
-    pass
+    return reduce((lambda x, y: float(x) / y), args)
+
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
