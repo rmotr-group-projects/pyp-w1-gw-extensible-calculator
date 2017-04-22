@@ -1,34 +1,34 @@
 
 def add(*args):
-    ret_val=args[0]
+    re=args[0]
     
     for x in args[1:]:
-        ret_val+=x
+    r
     
-    return ret_val
+    return sum
 
 def subtract(*args):
-    ret_val=args[0]
+    sum=args[0]
     
     for x in args[1:]:
-        ret_val-=x
+        sum-=x
     
-    return ret_val
+    return sum
     
 def multiply(*args):
-    ret_val=args[0]
+    sum=args[0]
     
     for x in args[1:]:
-        ret_val*=x
+        sum*=x
     
-    return ret_val
+    return sum
 
 def divide(*args):
-    ret_val=float(args[0])
+    sum=float(args[0])
     for x in args[1:]:
-        ret_val/=float(x)
+        sum/=float(x)
    
-    return ret_val
+    return sum
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
