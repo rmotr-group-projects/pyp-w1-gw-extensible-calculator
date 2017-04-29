@@ -63,9 +63,7 @@ def add_new_operation(calc, operation):
                       
     """
     if isinstance(operation, dict):
-        key = list(operation.keys())
-        value = list(operation.values())
-        calc['operations'][key[0]] = value[0]
+        calc['operations'].update(operation)
     else: 
         raise InvalidOperation('Given operation is invalid.')
 
