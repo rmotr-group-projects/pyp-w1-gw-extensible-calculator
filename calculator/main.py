@@ -63,8 +63,8 @@ def add_new_operation(calc, operation):
                       
     """
     if isinstance(operation, dict):
-        key = operation.keys()
-        value = operation.values()
+        key = list(operation.keys())
+        value = list(operation.values())
         calc['operations'][key[0]] = value[0]
     else: 
         raise InvalidOperation('Given operation is invalid.')
@@ -74,7 +74,7 @@ def get_operations(calc):
     """
     Returns the list of operation names supported by given calculator.
     """
-    return calc['operations'].keys()
+    return list(calc['operations'].keys())
 
 
 def get_history(calc):
