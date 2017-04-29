@@ -1,3 +1,4 @@
+from functools import reduce
 
 def add(*args):
     return reduce(lambda acc, y: acc + y, args, 0)
