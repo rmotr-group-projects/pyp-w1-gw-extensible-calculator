@@ -34,4 +34,7 @@ class TestCalculatorOperations(unittest.TestCase):
         self.assertEqual(divide(10, -2), -5)
         self.assertEqual(divide(12, 2, 3), 2)
 
+    def test_square_root(self):
+        self.assertEqual(square_root(4), 2.0)
+        self.assertEqual(square_root(4, 16), (2.0, 4.0))
     # implement extra tests for your custom operations
