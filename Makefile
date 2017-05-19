@@ -7,6 +7,14 @@ test:
 	@echo $(TAG)Running tests$(END)
 	PYTHONPATH=. py.test tests
 
+test-operations:
+	@echo $(TAG)Running tests$(END)
+	PYTHONPATH=. py.test tests/test_operations.py
+	
+test-main:
+	@echo $(TAG)Running tests$(END)
+	PYTHONPATH=. py.test tests/test_main.py
+
 test-cov:
 	@echo $(TAG)Running tests with coverage$(END)
 	PYTHONPATH=. py.test --cov=calculator tests
