@@ -65,7 +65,7 @@ def add_new_operation(calc, operation):
     """
 
     if type(operation) != dict:
-        raise InvalidParams('Given params are invalid.')
+        raise InvalidOperation('Given operation is invalid.')
 
     return calc['operations'].update(operation)
 
