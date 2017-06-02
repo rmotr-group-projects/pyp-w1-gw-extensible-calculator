@@ -44,16 +44,15 @@ def perform_operation(calc, operation, params):
     """
 
     if not check_parameters(params):
-        raise InvalidOperation('Given operation is invalid.')
+        raise InvalidParams('Given params are invalid.')
 
-    if check_parameters(params):
-        for value in [params]:
-            result =  calc['operations'][operation](*params)
+    for value in [params]:
+        result =  calc['operations'][operation](*params)
 
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        calc['history'].append((timestamp, operation, params, result))
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    calc['history'].append((timestamp, operation, params, result))
 
-        return result
+    return result
 
 
 def add_new_operation(calc, operation):
@@ -65,7 +64,7 @@ def add_new_operation(calc, operation):
                       ie: {'add': add_function}
     """
 
-    if not isinstance(operation, dict):
+    if type(operation) != dict:
         raise InvalidParams('Given params are invalid.')
 
     return calc['operations'].update(operation)
@@ -90,6 +89,7 @@ def get_history(calc):
         ie:
         ('2016-05-20 12:00:00', 'add', (1, 2), 3),
     """
+    
     return calc['history']
 
 
@@ -97,12 +97,17 @@ def reset_history(calc):
     """
     Resets the calculator history back to an empty list.
     """
-    calc['history'].clear()
+    
+    del calc['history'][:]
 
 
 def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
-    return calc['history'][-1][-1]
+    
+    if calc['history']:
+        return calc['history'][-1][-1]
+    else:
+        return None
 
