@@ -18,6 +18,3 @@ def plot(*args):
     # See README for info.
     pass
 
-if __name__ == '__main__':
-    #Space for quick log messages if needed
-    pass
