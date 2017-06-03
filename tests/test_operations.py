@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 import unittest
 
 from calculator.operations import *
@@ -34,4 +35,33 @@ class TestCalculatorOperations(unittest.TestCase):
         self.assertEqual(divide(10, -2), -5)
         self.assertEqual(divide(12, 2, 3), 2)
 
-    # implement extra tests for your custom operations
+    def test_plot(self):
+        x = symbols('x')
+        plot_test = (plot(-x**2, -2, 2))
+        self.assertEqual(plot_test, 
+        """
+        -0.0013 |                       .....  ......                    
+                |                    ...             ..                  
+                |                  ..                  ..                
+                |                ..                      ..              
+                |              ..                          ..            
+                |             /                              \           
+                |            /                                \          
+                |           /                                  \         
+        -2.0006 | ---------/------------------------------------\--------
+                |        ..                                      ..      
+                |                                                  .     
+                |       .                                                
+                |      /                                            .    
+                |     /                                              \   
+                |    /                                                \  
+                |   /                                                  \ 
+                |  /                                                    \
+             -4 | /                                                      
+                  -2                     0                          2
+        """)
+    # attempted plot test using textplot and the README example
+    # unknown variables: output width, height, etc.
+    
+    
+   

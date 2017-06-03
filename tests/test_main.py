@@ -2,7 +2,6 @@
 import unittest
 
 from freezegun import freeze_time
-
 from calculator.main import *
 from calculator.exceptions import *
 
@@ -115,3 +114,4 @@ class TestCalculator(unittest.TestCase):
     def test_repeate_last_operation_no_history(self):
         reset_history(self.calc)
         self.assertEqual(repeat_last_operation(self.calc), None)
+

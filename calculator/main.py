@@ -12,6 +12,7 @@ def create_new_calculator(operations=None):
     :param operations: Dict with initial operations.
                        ie: {'sum': sum_function, ...}
     """
+    
     calculator = {
         'operations' : {},
         'history' : []
@@ -32,11 +33,11 @@ def perform_operation(calc, operation, params):
     :param params: Tuple containing the list of nums to operate with.
                    ie: (1, 2, 3, 4.5, -2)
     """
-    # https://docs.python.org/3/library/functions.html#all
-    # https://docs.python.org/3/library/functions.html#isinstance
+    
     for item in params:
         if not isinstance(item, (int, float)):
             raise InvalidParams('Given params are invalid.')
+            # raising an exception stops the function/process from continuing
 
     result = calc['operations'][operation](*params)
     calc['history'].append((datetime.now().strftime('%Y-%m-%d %I:%M:%S'), operation, params, result))
@@ -51,6 +52,7 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
+    
     if isinstance(operation, dict) is False:
         raise InvalidOperation('Given operation is invalid.')
     else:
@@ -75,12 +77,14 @@ def get_history(calc):
         ie:
         ('2016-05-20 12:00:00', 'add', (1, 2), 3),
     """
+    
     return calc['history']
     
 def reset_history(calc):
     """
     Resets the calculator history back to an empty list.
     """
+    
     calc['history'] = []
 
 
@@ -88,6 +92,7 @@ def repeat_last_operation(calc):
     """
     Returns the result of the last operation executed in the history.
     """
+    
     if calc['history'] == []:
         return None
     else:
