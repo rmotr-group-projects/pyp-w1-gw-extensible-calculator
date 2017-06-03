@@ -46,10 +46,12 @@ def add_new_operation(calc, operation):
     :param operation: Dict with the single operation to be added.
                       ie: {'add': add_function}
     """
-    if type(operation) is not dict:
+    if operation != plot and type(operation) is not dict:
         raise InvalidOperation('Given operation is invalid.')
-    else: 
+    elif type(operation) is dict: 
         calc['operations'].update(operation)
+    else:
+        calc['operations']['plot'] = plot
 
 
 def get_operations(calc):

@@ -1,5 +1,7 @@
 from __future__ import division
 from functools import reduce
+from sympy import symbols
+from sympy.plotting import textplot
 
 
 def add(*args):
@@ -17,6 +19,11 @@ def divide(*args):
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
     # See README for info.
-    pass
-
-# add your custom operations here
+    if len(args) != 3:
+        return None
+    x = symbols('x')
+    #expression
+    exp = eval(args[0])
+    range_ = args[1:]
+    return textplot(exp, *range_)
+    
