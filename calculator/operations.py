@@ -1,23 +1,28 @@
+from functools import reduce
+from sympy import symbols
+from sympy.plotting import textplot
+from io import StringIO
+
+import contextlib
+
 
 def add(*args):
-    # your implementation here
-    pass
+    return sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    return reduce((lambda x, y: x - y), args)
 
 def multiply(*args):
-    # your implementation here
-    pass
+    return reduce((lambda x, y: x * y), args)
 
 def divide(*args):
-    # your implementation here
-    pass
+    return reduce((lambda x, y: x / float(y)), args)
 
 def plot(*args):
-    # OPTIONAL EXTRA CREDIT FUNCTION! 
-    # See README for info.
-    pass
-
-# add your custom operations here
+    x = symbols('x')
+    if len(args) != 3:
+        return None
+    expr = args[0]
+    values = args[1:]
+    return textplot(expr, *values)
+        

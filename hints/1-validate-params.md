@@ -1,6 +1,7 @@
 # Hint 1
 
-Before executing any operation in our calculator, we need to make sure that given parameters are valid. That means:
+Before executing any operation in our calculator, 
+we need to make sure that given parameters are valid. That means:
 - The `params` argument must be of type `tuple`.
 - All elements contained in the tuple must be either `int` or `float`.
 
