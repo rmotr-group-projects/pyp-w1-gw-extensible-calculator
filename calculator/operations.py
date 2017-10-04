@@ -1,19 +1,30 @@
-
-def add(*args):
-    # your implementation here
-    pass
+add = lambda *args : sum(args)
 
 def subtract(*args):
-    # your implementation here
-    pass
+    s_base = args[0]
+    s_rest = args[1:]
+    
+    for num in s_rest:
+        s_base -= num
+    
+    return s_base
 
 def multiply(*args):
-    # your implementation here
-    pass
+    p_base = 1
+    
+    for num in args:
+        p_base *= num
+    
+    return p_base
 
 def divide(*args):
-    # your implementation here
-    pass
+    d_base = float(args[0])
+    d_rest = args[1:]
+    
+    for num in d_rest:
+       d_base /= num
+    
+    return int(d_base) if int(d_base) == d_base else d_base
 
 def plot(*args):
     # OPTIONAL EXTRA CREDIT FUNCTION! 
